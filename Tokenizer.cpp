@@ -34,16 +34,28 @@ Token Tokenizer::next_token(){
             /// Запоминаем значение указателя и увеличиваем счетчик.
             start = cur;
             cur++;
-
             /// Опять проверяем является ли символ числом. 
             while(cur < expr.length() && isdigit(expr.at(cur)) )
             {
                 cur++;
             }
 
-            if(cur < expr.length() && (expr.at(cur) == '.' | expr.at(cur) == ','))
+            if(cur < expr.length() && (expr.at(cur) == '.' || expr.at(cur) == ','))
             {
                 cur++;
+
+                /// Доделать!!!!
+                if(expr.at(cur) == ',')
+                {
+                    char a = expr.at(cur);
+                    a = '.';
+                    expr.at(cur) = a;
+                    while(cur < expr.length() && isdigit(expr.at(cur)) )
+                    {
+                        cur++;
+                    }
+                } 
+
                 while(cur < expr.length() && isdigit(expr.at(cur)) )
                 {
                     cur++;
