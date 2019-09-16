@@ -58,7 +58,7 @@ Token Tokenizer::next_token(){
         {
             start = cur;
             cur++;
-            while(cur < expr.length() && !isdigit(expr.at(cur)) && (expr.at(cur) == '+' | expr.at(cur) == '-') && expr.at(cur) == '.' )
+            while(cur < expr.length())
             {
                 cur++;
             }
