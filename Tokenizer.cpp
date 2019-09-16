@@ -40,27 +40,14 @@ Token Tokenizer::next_token(){
                 cur++;
             }
 
-            if(cur < expr.length() && (expr.at(cur) == '.' || expr.at(cur) == ','))
+            if(cur < expr.length() && expr.at(cur) == '.')
             {
                 cur++;
-
-                /// Доделать!!!!
-                if(expr.at(cur) == ',')
-                {
-                    char a = expr.at(cur);
-                    a = '.';
-                    expr.at(cur) = a;
-                    while(cur < expr.length() && isdigit(expr.at(cur)) )
-                    {
-                        cur++;
-                    }
-                } 
 
                 while(cur < expr.length() && isdigit(expr.at(cur)) )
                 {
                     cur++;
                 }
-                /// Ошибка
             }
             /// Создаем подстроку с числом. 
             string number = expr.substr(start, cur - start);
@@ -69,8 +56,15 @@ Token Tokenizer::next_token(){
             return result;
         } else 
         {
-            /// Иначе мы не знаем что написано в строке и падаем.
-            /// Token unknown = Token(string unknown);
+            start = cur;
+            cur++;
+            while(cur < expr.length() && !isdigit(expr.at(cur)) && (expr.at(cur) == '+' | expr.at(cur) == '-') && expr.at(cur) == '.' )
+            {
+                cur++;
+            }
+            /// Создаем подстроку, в которую кладем не валидные данные. 
+            string unknown = expr.substr(start, cur - start);
+            Token result = Token(unknown);
         } 
     }
     /// Если мы тут, то строка закончилась. Возвращаем пустой токен.
