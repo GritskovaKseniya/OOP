@@ -1,5 +1,6 @@
 #include "ExpressionAnalyzerSt.h"
 #include <string>
+#include <cstdlib>
 
 /// Конструктор.
 Tokenizer::Tokenizer(string expr)
@@ -34,20 +35,21 @@ Token Tokenizer::next_token(){
             /// Запоминаем значение указателя и увеличиваем счетчик.
             start = cur;
             cur++;
+
             /// Опять проверяем является ли символ числом. 
             while(cur < expr.length() && isdigit(expr.at(cur)) )
             {
                 cur++;
             }
 
-            if(cur < expr.length() && expr.at(cur) == '.')
+            if(cur < expr.length() && (expr.at(cur) == '.' | expr.at(cur) == ','))
             {
                 cur++;
-
                 while(cur < expr.length() && isdigit(expr.at(cur)) )
                 {
                     cur++;
                 }
+                /// Ошибка
             }
             /// Создаем подстроку с числом. 
             string number = expr.substr(start, cur - start);
@@ -58,13 +60,14 @@ Token Tokenizer::next_token(){
         {
             start = cur;
             cur++;
-            while(cur < expr.length())
+            while(cur < expr.length() )
             {
                 cur++;
             }
-            /// Создаем подстроку, в которую кладем не валидные данные. 
-            string unknown = expr.substr(start, cur - start);
+            /// Создаем подстроку, в которую кладем невалидные данные. 
+            string unknown = expr.substr(start); //кладем всё, от начала указатела до конца строки
             Token result = Token(unknown);
+            return result;
         } 
     }
     /// Если мы тут, то строка закончилась. Возвращаем пустой токен.
