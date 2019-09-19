@@ -41,7 +41,6 @@ void TestTokenizer(string expr)
     {
         Token t = test.next_token();
         cout << t.debug() << endl;
-        
         exit = t.is_empty();
     }
 }

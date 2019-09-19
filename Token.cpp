@@ -31,15 +31,15 @@ string Token::debug(){
             break;
 
         case NUMBER:
-            strs << "NUMBER" << value;
+            strs << "NUMBER" << " " << value;
             break;
     
         case OPER:
-            strs << "OPER" << oper;
+            strs << "OPER" << " " << oper;
             break;
     
         case UNKNOWN:
-            strs << "UNKNOWN" << unknown;
+            strs << "UNKNOWN" << " " << unknown;
             break;
     
         default:
