@@ -60,10 +60,6 @@ Token Tokenizer::next_token(){
         {
             start = cur;
             cur++;
-            while(cur < expr.length() )
-            {
-                cur++;
-            }
             /// Создаем подстроку, в которую кладем невалидные данные. 
             string unknown = expr.substr(start); //кладем всё, от начала указатела до конца строки
             Token result = Token(unknown);
