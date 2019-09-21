@@ -28,6 +28,8 @@ Token Tokenizer::next_token(){
             cur++; 
             return result;
         }   
+        /// Дописать логику для * и / 
+        /// Учесть приоритет операций
 
         /// Проверяем, является ли наш символ числом с помощью функции isdigit
         if( cur < expr.length() && isdigit(expr.at(cur)) )
@@ -60,6 +62,10 @@ Token Tokenizer::next_token(){
         {
             start = cur;
             cur++;
+            while(cur < expr.length() )
+            {
+                cur++;
+            }
             /// Создаем подстроку, в которую кладем невалидные данные. 
             string unknown = expr.substr(start); //кладем всё, от начала указатела до конца строки
             Token result = Token(unknown);
