@@ -42,7 +42,7 @@ ParseResult eval(string expr)
     Token t1 = tok.next_token();
     if (!t1.is_number())
     {
-        return ParseResult("Expected number, but got" + t1.debug());
+        return ParseResult("Expected number, but got " + t1.debug());
     }
     
     double result = t1.get_number();
@@ -59,13 +59,13 @@ ParseResult eval(string expr)
         }
         if (!op_token.is_oper())
         {
-            return ParseResult("Expected operator but got" + op_token.debug());
+            return ParseResult("Expected operator but got " + op_token.debug());
         }
         
         Token num_token = tok.next_token();
         if (!num_token.is_number())
         {
-            return ParseResult("Expected number but got" + num_token.debug());
+            return ParseResult("Expected number but got " + num_token.debug());
         }
         
         // Применяем оператор + или - к разобранным числам.
