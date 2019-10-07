@@ -32,8 +32,10 @@ Token Tokenizer::next_token(){
             cur++; 
             return result;
         }   
-        /// Дописать логику для * и / 
-        /// Учесть приоритет операций
+
+        // Дописать логику для * и / 
+        // Учесть приоритет операций
+        
 
         /// Проверяем, является ли наш символ числом с помощью функции isdigit
         if( cur < expr.length() && isdigit(expr.at(cur)) )
@@ -55,7 +57,11 @@ Token Tokenizer::next_token(){
                 {
                     cur++;
                 }
-                /// Ошибка
+                if(!isdigit(expr.at(cur))){
+                    string unknown = expr.substr(start); //кладем всё, от начала указатела до конца строки
+                    Token result = Token(unknown);
+                    return result;
+                }
             }
             /// Создаем подстроку с числом. 
             string number = expr.substr(start, cur - start);
