@@ -28,9 +28,23 @@ class CDcollection
         void print(); 
     
     private:
-
+        /// Количество владельцев коллекции.
         int nPerson;
 
+        /// Количество дисков в коллекции.
         int nCD;
 
-};
+        /// 
+        int idPerson;
+
+        ///
+        int idParent;
+
+        ///
+        int idChild;
+
+        ///
+        char *CDname;
+
+        ///
+        int i;};
