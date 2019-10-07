@@ -8,7 +8,7 @@ int main() {
     return 0;
     /// объявляем переменные и присваиваем им значения.
     int nPerson = 6;
-    int nCD = 15;
+    int nCD = 6;
     int i;
     CDcollection lib = CDcollection(nPerson, nCD);
 
