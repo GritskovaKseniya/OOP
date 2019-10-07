@@ -30,8 +30,7 @@ int CDcollection::amount(int idPerson){
 }
 
 char *CDcollection::nameCD(int idPerson, int i){
-    this->idPerson = idPerson;
-    this->i = i;
+    
 }
 
 void CDcollection::print(){
