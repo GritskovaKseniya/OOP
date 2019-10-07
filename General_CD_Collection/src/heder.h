@@ -21,7 +21,7 @@ class CDcollection
         /// Сколько дисков у idPerson.
         int amount(int idPerson); 
 
-        /// Название i-того диска у idPerson.
+        /// Читает у кого какой диск находится. Название i-того диска у idPerson.
         char* nameCD(int idPerson, int i); 
 
         /// Распечатать состояние объекта.
@@ -45,5 +45,13 @@ class CDcollection
 
         /// Ссыдка на диск, который нужно передать. 
         char *CDname;
+
+        /// Массив индексов владельцев дисков.
+        int* disk_owner;
+
+        /// Массив имен дисков.
+        char** disk_name;
+
+
 
 };
