@@ -1,5 +1,7 @@
 #include "heder.h"
 #include <iostream>
+#include <cstring>
+#include <string>
 
 using namespace std;
 
@@ -13,7 +15,7 @@ CDcollection::CDcollection(int nPerson, int nCD){
     // Продумать состояние владельца, которому не пренадлежит никакой диск.
 
     /// Заполняем массив, в котором говорится, что диск принадлежит кому-то.
-    for(int i; i < nCD; ++i){
+    for(int i = 0; i < nCD; ++i){
         disk_owner[i] = -1; /// Диск никому не принадлежит.
     }
 }
@@ -27,9 +29,14 @@ CDcollection::CDcollection(){
 void CDcollection::add(char *CDname, int idPerson){
     this->idPerson = idPerson;
     this->CDname = CDname;
-    disk_owner[idPerson] = idPerson;
-    /// Проверка введенного имени диска на уникальность. Если false, вывести сообщение об ошибке.
-
+    int k = 0;
+    for(int i = 0; i < nCD; ++i){
+       if(disk_owner[i] = -1){
+           k = i;
+       }
+    }
+    disk_owner[k] = idPerson;
+    disk_name[k] = CDname;
 }
 
 void CDcollection::transfer(char *CDname, int idParent, int idChild){
@@ -43,27 +50,42 @@ void CDcollection::transfer(char *CDname, int idParent, int idChild){
 
 int CDcollection::where (char *CDname){
     this->CDname = CDname;
-    // Некая логика, результат которой - номер владельца диска.
-    cout << idPerson << endl;
+    int idCD = 0;
+    if(strcmp(disk_name[idCD], CDname) != 0){  ///Функция сравнивает слова
+        idCD++;
+    }
+    disk_owner[idCD] = idPerson;
+
+    cout << "Этот диск у " << idPerson << " владельца. "<< endl;
 }
 
 int CDcollection::amount(int idPerson){
     this->idPerson = idPerson;
-    int k; /// Число дисков владельца.
-    //логика, которая вычисляет количество дисков у данного владельца.
-    cout << " У " << idPerson << " владельца " << k << " дисков" << endl;
+    int m = 0;  /// Число дисков владельца.
+
+    for(int k = 0; k < nCD; ++k){
+        if(disk_owner[k]== idPerson){
+            m++;
+        }
+    }
+    cout << " У " << idPerson << " владельца " << m << " дисков" << endl;
 }
 
-/// Передаем номер владельца и номер дска (для этого у каждого владельца долен быть массив дисков?)
-/// По факту выводим имя конкретного диска по имени владельца и позиции диска 
+/// По факту выводим имя конкретного диска по имени владельца и номеру диска 
 char *CDcollection::nameCD(int idPerson, int i){
-    for(int j; j < i; ++j){
-        cout << CDname << endl;  
-    }
+    int m = 0;
+    do{
+        for(int k; k < nCD; ++k){
+            if(disk_owner[k]== idPerson){
+                m++;
+            }
+        }
+    }while(m == i);
+    cout << CDname << endl;  
 }
 
 void CDcollection::print(){
-    for(int i; i <  nPerson; ++i){
-        cout << CDname << " : " << idPerson << endl;
+    for(int i = 0; i <  nCD; ++i){
+        cout << disk_name[i] << " : " << disk_owner[i] << endl;
     }
 }

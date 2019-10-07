@@ -44,7 +44,7 @@ class CDcollection
         int idChild;
 
         /// Ссыдка на диск, который нужно передать. 
-        char *CDname;
+        char* CDname;
 
         /// Массив индексов владельцев дисков.
         int* disk_owner;
