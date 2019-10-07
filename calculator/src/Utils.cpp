@@ -18,11 +18,11 @@ bool apply_op(char op, double num1, double num2, double* result)
 
     return true;
 }
-
+/*
 ParseResult ReadTerm(&tokenizer){
  retutn 0;
 }
-
+*/
 ParseResult eval(string expr)
 {
     /*
@@ -45,25 +45,24 @@ ParseResult eval(string expr)
     Tokenizer tok = Tokenizer(expr);
 
     // Первый токен должен быть числом
-    /*
     Token t1 = tok.next_token();
     if (!t1.is_number())
     {
         return ParseResult("Expected number, but got" + t1.debug());
     }
 
-    double result = t1.get_number();*/
-
+    double result = t1.get_number();
+    /*
     ParseResult number1 = ReadTerm(&tokenizer);
     if (number1.is_error())
     {
         return number1;
-    }
+    }*/
 
     /// Написать логику функции ReadTerm(&tokenizer);
     /// Запомнить позицию предыдущего токена и сделать функцию backup, которая вернет значение предыдущей позиции, чтобы next_token не считал токен два раза
     ///
-    double result = number1.get_result();
+    /*double result = number1.get_result(); */
 
 
     // В цикле обрабатываем последующие сложения и вычитания
