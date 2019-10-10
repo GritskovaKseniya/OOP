@@ -1,6 +1,9 @@
 #include "ExpressionAnalyzerSt.h"
 #include <string>
 #include <cstdlib>
+#include <iostream>
+
+using namespace std;
 
 /// Конструктор.
 Tokenizer::Tokenizer(string expr)
@@ -53,14 +56,17 @@ Token Tokenizer::next_token(){
             if(cur < expr.length() && (expr.at(cur) == '.' | expr.at(cur) == ','))
             {
                 cur++;
+                /// Если после точки число.
                 while(cur < expr.length() && isdigit(expr.at(cur)) )
                 {
                     cur++;
                 }
-                if(!isdigit(expr.at(cur))){
+
+                /// Если после точки не число мы должны вернуть unknown строку и заветшить предоставление токенов.
+                if(cur < expr.length() && ( !isdigit(expr.at(cur))  )   ){
                     string unknown = expr.substr(start); //кладем всё, от начала указатела до конца строки
-                    Token result = Token(unknown);
-                    return result;
+                    Token put = Token(unknown);
+                    return put;
                 }
             }
             /// Создаем подстроку с числом. 
