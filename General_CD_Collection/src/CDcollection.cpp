@@ -43,8 +43,8 @@ void CDcollection::add(char *CDname, int idPerson){
     }
     disk_owner[k] = idPerson;
     disk_name[k] = CDname;
-    cout << "OWNER " << disk_owner[k] << endl;
-    cout << "NAME " << disk_name[k] << endl;
+//    cout << "OWNER " << disk_owner[k] << endl;
+//    cout << "NAME " << disk_name[k] << endl;
 }
 
 void CDcollection::transfer(char *CDname, int idParent, int idChild){
