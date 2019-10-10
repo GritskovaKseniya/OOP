@@ -65,8 +65,7 @@ Token Tokenizer::next_token(){
                 /// Если после точки не число мы должны вернуть unknown строку и заветшить предоставление токенов.
                 if(cur < expr.length() && ( !isdigit(expr.at(cur))  )   ){
                     string unknown = expr.substr(start); //кладем всё, от начала указатела до конца строки
-                    Token put = Token(unknown);
-                    return put;
+                    cout << unknown;
                 }
             }
             /// Создаем подстроку с числом. 
