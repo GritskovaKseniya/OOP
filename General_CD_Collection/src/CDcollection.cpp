@@ -54,6 +54,14 @@ void CDcollection::transfer(char *CDname, int idParent, int idChild){
     /// Проверка наличия имени диска в коллекции. Если false, выводим на экран сообщение об ошибке.
     /// Проверка принадлежности данного диска к данному владельцу. Если false, выводим сообщение об ошибке.
     /// Передача диска новому владельцу.
+    int k = 0;
+    for(int i = 0; i < nCD; i++){
+        if(disk_owner[i] == idParent){
+            k = i;
+        }
+    }
+    disk_owner[k] == idChild;
+
 }
 
 int CDcollection::where (char *CDname){

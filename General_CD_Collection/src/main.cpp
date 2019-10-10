@@ -18,13 +18,13 @@ int main() {
     (*lib).add("Abra", 0);
     (*lib).add("Iooio", 1);
 
-    //(*lib).where ("Abra");
     (*lib).print();
     // Abra : 0
     // Iooio: 1
 
- //   lib.transfer("Abra", 0, 1);
- //   lib.print();
+    //(*lib).where ("Abra");
+    (*lib).transfer("Abra", 0, 1);
+    (*lib).print();
     // Abra : 1
     // Iooio : 1
 
