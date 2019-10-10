@@ -18,10 +18,11 @@ CDcollection::CDcollection(int nPerson, int nCD){
     for(int i = 0; i < nCD; ++i){
         disk_owner[i] = -1; /// Диск никому не принадлежит.
     }
+}
 
 CDcollection::~CDcollection(){
-    delete[] nPerson;
-    delete[] nCD;
+    delete[] disk_name;
+    delete[] disk_owner;
 }
 
 /*
