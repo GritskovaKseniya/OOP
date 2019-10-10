@@ -19,7 +19,7 @@ int main() {
     z = &m;
     cout << *z << endl;
 */
-    (*lib).add((char*)'A', 0);
+    (*lib).add("Abra", 0);
    // lib.add('I', 1);
 
     (*lib).print();

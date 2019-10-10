@@ -99,6 +99,7 @@ private:
     int cur;  
     ///Функция, которая пропускает пробелы.
     void SkipSpaces();
+
 };
 
 

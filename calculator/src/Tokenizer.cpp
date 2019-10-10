@@ -22,6 +22,7 @@ Token Tokenizer::next_token(){
     SkipSpaces();
 
     int start = cur; /// Заводим счетчик строки.
+    int ex = cur;
 
     /// Условие: Счётчик не вышел за пределы строки.
     while (cur < expr.length())
@@ -47,13 +48,14 @@ Token Tokenizer::next_token(){
             start = cur;
             cur++;
 
+
             /// Опять проверяем является ли символ числом. 
             while(cur < expr.length() && isdigit(expr.at(cur)) )
             {
                 cur++;
             }
 
-            if(cur < expr.length() && (expr.at(cur) == '.' | expr.at(cur) == ','))
+            if(cur < expr.length() && expr.at(cur) == '.' )
             {
                 cur++;
                 /// Если после точки число.
@@ -63,17 +65,24 @@ Token Tokenizer::next_token(){
                 }
 
                 /// Если после точки не число мы должны вернуть unknown строку и заветшить предоставление токенов.
-                if(cur < expr.length() && ( !isdigit(expr.at(cur))  )   ){
-                    start = cur;
-                    string unknown = expr.substr(start); //кладем всё, от начала указатела до конца строки
-                    cout << unknown << endl;
-                }
-            }
+             /*   if(cur < expr.length() && ( 
+                    !isdigit(expr.at(cur))
+                        )
+                    ){
+                    ex = cur-2;
+
+                }*/
+            }/*
+            string unknown = expr.substr(ex); //кладем всё, от начала указатела до конца строки
+            cout << unknown << endl;
+            Token result1 = Token(unknown);*/
             /// Создаем подстроку с числом. 
             string number = expr.substr(start, cur - start);
             /// Преобразуем string to double и создаем новый токен с этим содержимым.
             Token result = Token(atof(number.c_str()));
+            //return result1;
             return result;
+
         } else 
         {
             start = cur;
@@ -101,3 +110,16 @@ void Tokenizer::SkipSpaces()
         cur++;
     }
 }
+/*
+void Tokenizer::TokenType(char station)
+{
+    if(    station == '+'
+        || station == '-'
+        || station == '*'
+        || station == '/'
+        || station == '('
+        || station == ')'
+        ){
+            Token stat =Token(station);
+        } else if ()
+}*/
