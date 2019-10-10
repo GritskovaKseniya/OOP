@@ -14,14 +14,11 @@ int main() {
     int i;
     CDcollection *lib = new CDcollection(nPerson, nCD);
     /// CDcollection lib(nPerson, nCD); тоже самое, что и в строке выше.
-  /*  char m = 'A';
-    char *z;
-    z = &m;
-    cout << *z << endl;
-*/
-    (*lib).add("Abra", 0);
-   // lib.add('I', 1);
 
+    (*lib).add("Abra", 0);
+    (*lib).add("Iooio", 1);
+
+    //(*lib).where ("Abra");
     (*lib).print();
     // Abra : 0
     // Iooio: 1

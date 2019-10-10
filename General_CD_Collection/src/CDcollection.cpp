@@ -36,12 +36,15 @@ void CDcollection::add(char *CDname, int idPerson){
     this->CDname = CDname;
     int k = 0;
     for(int i = 0; i < nCD; ++i){
-       if(disk_owner[i] = -1){
+       if(disk_owner[i] == -1){
            k = i;
+           break;
        }
     }
     disk_owner[k] = idPerson;
     disk_name[k] = CDname;
+    cout << "OWNER " << disk_owner[k] << endl;
+    cout << "NAME " << disk_name[k] << endl;
 }
 
 void CDcollection::transfer(char *CDname, int idParent, int idChild){
@@ -61,6 +64,7 @@ int CDcollection::where (char *CDname){
     }
     disk_owner[idCD] = idPerson;
 
+    return idPerson;
     cout << "Этот диск у " << idPerson << " владельца. "<< endl;
 }
 
