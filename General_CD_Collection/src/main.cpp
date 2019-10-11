@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "heder.h"
+#include "CDcollection.h"
 
 using namespace std;
 
@@ -12,25 +12,25 @@ int main() {
     int nPerson = 6;
     int nCD = 15;
     int i;
-    CDcollection *lib = new CDcollection(nPerson, nCD);
+    CDcollection lib(nPerson, nCD);
     /// CDcollection lib(nPerson, nCD); тоже самое, что и в строке выше.
 
-    (*lib).add("Abra", 0);
-    (*lib).add("Iooio", 1);
+    lib.add("Abra", 0);
+    //lib.print();
+    lib.add("Iooio", 1);
 
-    (*lib).print();
+    lib.print();
     // Abra : 0
     // Iooio: 1
 
-    //(*lib).where ("Abra");
-    (*lib).transfer("Abra", 0, 1);
-    (*lib).print();
+    //lib.where ("Abra");
+    //lib.transfer("Abra", 0, 1);
+    //lib.print();
     // Abra : 1
     // Iooio : 1
 
   //  lib.nameCD(1, 0);
     // "Abra"
-    delete lib;
 
     return 0;
 }
