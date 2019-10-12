@@ -14,6 +14,28 @@ void CDcollection::add(char *CDname, int idPerson){
     }
     disk_owner[k] = idPerson;
     disk_name[k] = CDname;
+    /*cout << "Function add: " << endl;
+    cout << "OWNER " << disk_owner[k] << endl;
+    cout << "NAME " << disk_name[k] << endl;
+    cout << " " << endl;*/
+}
+
+/// По факту выводим имя конкретного диска по имени владельца и номеру диска 
+char *CDcollection::nameCD(int idPerson, int i){
+    int m = 0;
+    while (m < nCD)
+    {
+        if(disk_owner[m] == idPerson){
+            if(i == 0){
+                /*cout << "Function nameCD: " << endl;
+                cout << "NAME " << disk_name[m] << endl;  
+                cout << " " << endl;*/
+                return disk_name[m];
+            }else i--;
+        }
+        m++;
+    }
+    return 0;
 }
 
 void CDcollection::print(){
@@ -29,47 +51,58 @@ void CDcollection::transfer(char *CDname, int idParent, int idChild){
     /// Проверка наличия имени диска в коллекции. Если false, выводим на экран сообщение об ошибке.
     /// Проверка принадлежности данного диска к данному владельцу. Если false, выводим сообщение об ошибке.
     /// Передача диска новому владельцу.
+
     int k = 0;
     for(int i = 0; i < nCD; i++){
         if(disk_owner[i] == idParent){
             k = i;
+            cout << "OWNER " << i << " = " << disk_owner[i] << endl;
         }
     }
     disk_owner[k] == idChild;
+    cout << "NEW OWNER " << disk_owner[k] << endl;
 
 }
 
 int CDcollection::where (char *CDname){
     int k = 0;
-    for(int i = 0; i < nCD; i++){
+    for(int i = 0; i < nCD; ++i){
         if(strcmp(disk_name[i], CDname)){ ///Функция сравнивает слова
             k = i;
+            cout << "disk " << i << " = " << disk_name[k] << endl;
         }
     }
     disk_owner[k];
+    cout << "Function where: " << endl;
+    cout << "OWNER " << disk_owner[k] << endl;
+    cout << " " << endl;
 }
 
 int CDcollection::amount(int idPerson){
     int m = 0;  /// Число дисков владельца.
-
-    for(int k = 0; k < nCD; ++k){
+    
+    for(int k = 0; k < nCD; k++){
+        cout << "m1 " << m << endl;
         if(disk_owner[k]== idPerson){
             m++;
+            cout << "m2 " << m << endl;
         }
+        cout << "m3 " << m << endl;
     }
+    //cout << " owner " << idPerson << " have " << m << "disks";
     return m;
+
+    /*while (m < nCD)
+    {
+        if(disk_owner[m] == idPerson){
+            i++;
+            cout << i;
+        }
+        m++;
+    }
+    cout << i << " DISKS" ;
+    return i;*/
 }
 
-/// По факту выводим имя конкретного диска по имени владельца и номеру диска 
-char *CDcollection::nameCD(int idPerson, int i){
-    int m = 0;
-    do{
-        for(int k = 0; k < nCD; ++k){
-            if(disk_owner[k]== idPerson){
-                m++;
-            }
-        }
-    }while(m == i);
-    cout << CDname << endl;  
-}
+
 

@@ -16,20 +16,22 @@ int main() {
     /// CDcollection lib(nPerson, nCD); тоже самое, что и в строке выше.
 
     lib.add("Abra", 0);
-    //lib.print();
     lib.add("Iooio", 1);
+    lib.add("lala", 1);
 
-    lib.print();
+    //lib.nameCD(1, 1);
+    //lib.print();
     // Abra : 0
     // Iooio: 1
 
-    //lib.where ("Abra");
+    lib.amount(1);
+    //lib.where ("Iooio");
     //lib.transfer("Abra", 0, 1);
     //lib.print();
     // Abra : 1
     // Iooio : 1
 
-  //  lib.nameCD(1, 0);
+    
     // "Abra"
 
     return 0;
