@@ -22,9 +22,4 @@ CDcollection::~CDcollection(){
     delete[] disk_owner;
 }
 
-/*
-перегрузка функции
-CDcollection::CDcollection(){
-}
-*/
 

@@ -19,6 +19,10 @@ class CDcollection
         char* nameCD(int idPerson, int i); 
         /// Распечатать состояние объекта.
         void print(); 
+
+        void print(int i);
+
+        void print(char *CDname);
     
     private:
         /// Количество владельцев коллекции.
