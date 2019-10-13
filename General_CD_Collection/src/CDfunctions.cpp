@@ -38,6 +38,19 @@ char *CDcollection::nameCD(int idPerson, int i){
     return 0;
 }
 
+int CDcollection::where (char *CDname){
+    for(int i = 0; i < nCD; ++i){
+        if(disk_name[i] == CDname){ ///Функция сравнивает слова
+            cout << "Function where: " << endl;
+            cout << "disk owner " << disk_owner[i] << endl;
+            cout << " " << endl;
+            return disk_owner[i];
+        }
+    }
+    return 0;
+}
+
+
 void CDcollection::print(){
     for(int i = 0; i <  nCD; ++i){
         if(disk_owner[i] != -1){
@@ -45,6 +58,8 @@ void CDcollection::print(){
         }
     }
 }
+
+
 
 ///НЕ ВЕРНО!
 void CDcollection::transfer(char *CDname, int idParent, int idChild){
@@ -62,20 +77,6 @@ void CDcollection::transfer(char *CDname, int idParent, int idChild){
     disk_owner[k] == idChild;
     cout << "NEW OWNER " << disk_owner[k] << endl;
 
-}
-
-int CDcollection::where (char *CDname){
-    int k = 0;
-    for(int i = 0; i < nCD; ++i){
-        if(strcmp(disk_name[i], CDname)){ ///Функция сравнивает слова
-            k = i;
-            cout << "disk " << i << " = " << disk_name[k] << endl;
-        }
-    }
-    disk_owner[k];
-    cout << "Function where: " << endl;
-    cout << "OWNER " << disk_owner[k] << endl;
-    cout << " " << endl;
 }
 
 int CDcollection::amount(int idPerson){

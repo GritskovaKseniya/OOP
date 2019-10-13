@@ -24,8 +24,8 @@ int main() {
     // Abra : 0
     // Iooio: 1
 
-    lib.amount(1);
-    //lib.where ("Iooio");
+    //lib.amount(1);
+    lib.where ("Abra");
     //lib.transfer("Abra", 0, 1);
     //lib.print();
     // Abra : 1
