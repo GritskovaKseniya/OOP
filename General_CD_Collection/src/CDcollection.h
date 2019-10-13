@@ -15,7 +15,7 @@ class CDcollection
         int where (char *CDname); 
         /// Сколько дисков у idPerson.
         int amount(int idPerson); 
-        /// Читает у кого какой диск находится. Название i-того диска у idPerson.
+        /// Читает у кого какой диск находится. Название i-того диска у idPerson. Выводим имя конкретного диска по имени владельца и номеру диска.
         char* nameCD(int idPerson, int i); 
         /// Распечатать состояние объекта.
         void print(); 
@@ -37,5 +37,9 @@ class CDcollection
         int* disk_owner;
         /// Массив имен дисков.
         char** disk_name;
+        /// Возвращаем индекс по имени.
+        int index_name (char *CDname);
+        /// Возвращаем индекс по владельцу.
+        int index_owner (int idParent);
 
 };
