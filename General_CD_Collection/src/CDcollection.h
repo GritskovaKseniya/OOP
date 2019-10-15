@@ -19,24 +19,12 @@ class CDcollection
         char* nameCD(int idPerson, int i); 
         /// Распечатать состояние объекта.
         void print(); 
-
-        void print(int i);
-
-        void print(char *CDname);
     
     private:
         /// Количество владельцев коллекции.
         int nPerson;
         /// Количество дисков в коллекции.
         int nCD;
-        /// Номер владельца.
-        int idPerson;
-        /// Номер человека, у которого находится диск.
-        int idParent;
-        /// НОмер человека, который получает диск.
-        int idChild;
-        /// Ссыдка на диск, который нужно передать. 
-        char* CDname;
         /// Массив индексов владельцев дисков.
         int* disk_owner;
         /// Массив имен дисков.
