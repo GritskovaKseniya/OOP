@@ -25,6 +25,10 @@ CDcollection::CDcollection(int nPerson, int nCD){
     disk_name[k] = CDname;
 }
 
+CDcollection::CDcollection(){
+
+}
+
 CDcollection::~CDcollection(){
     delete[] disk_name;
     delete[] disk_owner;
@@ -94,6 +98,10 @@ void CDcollection::transfer(char *CDname, int idParent, int idChild){
         /*cout << "NEW OWNER " << disk_owner[n] << endl;
         cout << " " << endl;*/
     }    
+}
+
+void CDcollection::transfer(char *CDname, int idChild){
+
 }
 
 int CDcollection::index_name (char *CDname){
