@@ -15,7 +15,7 @@ int main() {
     CDcollection lib(nPerson, nCD);
     /// CDcollection lib(nPerson, nCD); тоже самое, что и в строке выше.
 
-    lib.add("Abra", 0); 
+    lib.add("Abra", 7); 
     lib.add("Iooio", 1);
     lib.add("lala", 1);
 
@@ -29,7 +29,7 @@ int main() {
     //lib.transfer("Abra", 0, 2);
     lib.print();
     //lib.where ("Abra");
-    lib.print();
+    //lib.print();
     // Abra : 1
     // Iooio : 1
 

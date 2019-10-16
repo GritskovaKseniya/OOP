@@ -29,12 +29,18 @@ CDcollection::~CDcollection(){
 
 void CDcollection::add(char *CDname, int idPerson){
     int k = 0;
-    for(int i = 0; i < nCD; ++i){
-       if(disk_owner[i] == -1){
-           k = i;
-           break;
-       }
+    if((idPerson <= nPerson)&&(idPerson >= 0)){
+        for(int i = 0; i < nCD; ++i){
+            if(disk_owner[i] == -1){
+                k = i;
+                break;
+            }
+        } 
+    }else
+    {
+        cout << " Error " << endl;
     }
+    
     disk_owner[k] = idPerson; /// Записываем владельца в свободную ячейку массива.
     disk_name[k] = CDname; /// Записываем имя диска в свободную ячейку массива.
     
@@ -124,10 +130,10 @@ int CDcollection::amount(int idPerson){
     }
     
 
-    cout << "Function amount: " << endl;
+   /* cout << "Function amount: " << endl;
     cout << "disk owner " << idPerson << endl;
     cout << count_disk << " disks " << endl;
-    cout << " " << endl;
+    cout << " " << endl;*/
 
 
     return count_disk;
