@@ -7,31 +7,24 @@ using namespace std;
 CDcollection::CDcollection(int nPerson, int nCD){
     this->nPerson = nPerson;
     this->nCD = nCD;
-    int idPerson;
-    char* CDname;
     disk_name = new char*[nCD]; /// Массив имен дисков. (размер = количество дисков) Заполняется постепенно, изначально пуст.
     disk_owner = new int[nCD]; /// Массив владельцев дисков. (размер = количество дисков) 
 
-    int k = 0;
     /// Заполняем массивы (наличие владельца у диска, наличие имени)
     for(int i = 0; i < nCD; ++i){
         disk_owner[i] = -1; /// Диск никому не принадлежит.
         disk_name[i] = 0;
-        k = i;
     }
 
-    ///disk_owner[idPerson] = idPerson;
-    disk_owner[k] = idPerson;
-    disk_name[k] = CDname;
 }
 
-CDcollection::CDcollection(){
+//CDcollection::CDcollection(){
 
-}
+//}
 
 CDcollection::~CDcollection(){
     delete[] disk_name;
-    delete[] disk_owner;
+    //delete[] disk_owner;
 }
 
 void CDcollection::add(char *CDname, int idPerson){
@@ -100,9 +93,9 @@ void CDcollection::transfer(char *CDname, int idParent, int idChild){
     }    
 }
 
-void CDcollection::transfer(char *CDname, int idChild){
+/*void CDcollection::transfer(char *CDname, int idChild){
 
-}
+}*/
 
 int CDcollection::index_name (char *CDname){
     for(int i = 0; i < nCD; ++i){
@@ -124,39 +117,28 @@ int CDcollection::index_owner (int idParent){
 
 int CDcollection::amount(int idPerson){
     int count_disk = 0; /// Счетчик дисков.
-    int m = 0;
-    /*for(int k = 0; k < nCD; k++){
-        while (disk_owner[k]== idPerson){
+    for(int k = 0; k < nCD; k++){
+        if (disk_owner[k]== idPerson){
             count_disk++;
         }
-    }*/
-    while (m < nCD)
-    {
-        while (disk_owner[m]== idPerson){
-            ++count_disk;
-        }
-        m++;
     }
     
 
-/*    cout << "Function amount: " << endl;
+    cout << "Function amount: " << endl;
     cout << "disk owner " << idPerson << endl;
     cout << count_disk << " disks " << endl;
     cout << " " << endl;
-*/
+
 
     return count_disk;
 }
 
 
 void CDcollection::print(){
-    int m = 0;
-    while (m < nCD)
-    {
-        if(disk_owner[m] != -1){
-            cout << disk_name[m] << " : " << disk_owner[m] << endl;
+    for(int k = 0; k < nCD; ++k){
+        if(disk_owner[k] != -1){
+            cout << disk_name[k] << " : " << disk_owner[k] << endl;
         }
-        m++;
     }
 }
 
