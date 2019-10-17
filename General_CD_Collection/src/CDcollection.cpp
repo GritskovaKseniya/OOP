@@ -57,9 +57,9 @@ char *CDcollection::nameCD(int idPerson, int i){
         if(disk_owner[m] == idPerson){ /// Если номер владельца и значение в массиве совпадают
             if(i == 0){
 
-                cout << "Function nameCD: " << endl;
+                /*cout << "Function nameCD: " << endl;
                 cout << "NAME " << disk_name[m] << endl;  
-                cout << " " << endl;
+                cout << " " << endl;*/
                 
                 return disk_name[m]; /// Возвращаем имя диска.
             }else i--; /// Уменьшаем номер диска
@@ -72,10 +72,10 @@ int CDcollection::where (char *CDname){
     for(int i = 0; i < nCD; ++i){
         if(disk_name[i] == CDname){ /// Сравниваем содержимое элемента массива и строки, которую нам передали.
 
-            /*cout << "Function where: " << endl;
+            cout << "Function where: " << endl;
             cout << CDname << endl;
             cout << "disk owner " << disk_owner[i] << endl;
-            cout << " " << endl;*/
+            cout << " " << endl;
         
             return disk_owner[i]; /// Возвращаем номер владельца диска
         }
@@ -86,10 +86,10 @@ int CDcollection::where (char *CDname){
 void CDcollection::transfer(char *CDname, int idParent, int idChild){
     int k = index_name(CDname); /// Проверка наличия имени диска в коллекции.
     int n = index_owner(idParent,k);
-    if(k = -1){
+    if(k == -1){
         cout << " ERROR: there is no such disk " << endl;
     } else
-    if(n = -1) {
+    if(n == -1) {
         cout << " ERROR: this owner doesn't have the disk " << endl;
     } else
     if(k == n){ /// Проверка принадлежности данного диска к данному владельцу. 
