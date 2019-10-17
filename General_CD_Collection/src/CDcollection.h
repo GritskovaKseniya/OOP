@@ -32,6 +32,6 @@ class CDcollection
         /// Возвращаем индекс по имени.
         int index_name (char *CDname);
         /// Возвращаем индекс по владельцу.
-        int index_owner (int idParent);
+        int index_owner (int idParent, int m);
 
 };

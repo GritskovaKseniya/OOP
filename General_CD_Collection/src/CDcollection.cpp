@@ -85,7 +85,13 @@ int CDcollection::where (char *CDname){
 
 void CDcollection::transfer(char *CDname, int idParent, int idChild){
     int k = index_name(CDname); /// Проверка наличия имени диска в коллекции.
-    int n = index_owner(idParent);
+    int n = index_owner(idParent,k);
+    if(k = -1){
+        cout << " ERROR: there is no such disk " << endl;
+    } else
+    if(n = -1) {
+        cout << " ERROR: this owner doesn't have the disk " << endl;
+    } else
     if(k == n){ /// Проверка принадлежности данного диска к данному владельцу. 
         
         /*cout << "Function transfer: " << endl;
@@ -103,8 +109,6 @@ void CDcollection::transfer(char *CDname, int idParent, int idChild){
 
 }*/
 
-
-/// Та же ошибка, что и в where. Тут за всё отдувается 1-й диск.
 int CDcollection::index_name (char *CDname){
     for(int i = 0; i < nCD; ++i){
         if(disk_name[i] == CDname){ /// Сравниваем строки.     
@@ -116,13 +120,15 @@ int CDcollection::index_name (char *CDname){
 
 
 /// Находит первый попавшийся диск, принадлежащий пользователю. Нет гарантии, что это тот, который хоят передать.
-int CDcollection::index_owner (int idParent){
+int CDcollection::index_owner (int idParent,int m){
     for(int i = 0; i < nCD; ++i){
-        if(disk_owner[i] == idParent){  /// Сравниваем числа.   
-            return i; /// Возвращаем индекс массива, в котором лежит имя. оно = индексу владельца.
+        if(disk_owner[i] == idParent){  /// Сравниваем числа.
+            if(i == m){ /// Сравниваем индекс имени и владельца.
+                return i; /// Возвращаем индекс массива, в котором лежит номер владельца. оно = индексу владельца.
+            }
         }
     }
-    return 0;
+    return -1; /// У данного владельца нет этого диска.
 }
 
 int CDcollection::amount(int idPerson){
