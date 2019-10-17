@@ -7,12 +7,14 @@ class CDcollection
     public:
         /// Хранилище двух массивов: владельцев и колекции дисков.
         CDcollection(int nPerson, int nCD);
+        CDcollection();
         /// Деструктор. Освобождает использованные объектом ресурсов и удаление нестатических переменных объекта.
         ~CDcollection();
         /// Добавить новый диск.
         void add(char *CDname, int idPerson);
         /// Дать дсик idPerson.
         void transfer(char *CDname, int idParent, int idChild); 
+        void transfer(char *CDname, int idChild);
         /// У кого находится диск.
         int where (char *CDname); 
         /// Сколько дисков у idPerson.

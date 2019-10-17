@@ -19,10 +19,10 @@ CDcollection::CDcollection(int nPerson, int nCD){
 }
 
 
-///Перезгрузка конструктора.
-//CDcollection::CDcollection(){
 
-//}
+CDcollection::CDcollection(){
+    CDcollection(5,15);
+}
 
 CDcollection::~CDcollection(){
     delete[] disk_name;
@@ -105,9 +105,10 @@ void CDcollection::transfer(char *CDname, int idParent, int idChild){
 }
 
 /// Перегрузка функции.
-/*void CDcollection::transfer(char *CDname, int idChild){
-
-}*/
+void CDcollection::transfer(char *CDname, int idChild){
+    int idParent = where(CDname);
+    transfer(CDname, idParent, idChild);
+}
 
 int CDcollection::index_name (char *CDname){
     for(int i = 0; i < nCD; ++i){
