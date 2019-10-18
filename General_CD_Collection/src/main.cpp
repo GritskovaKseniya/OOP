@@ -24,23 +24,21 @@ int main() {
     if(name != 0){
         cout << "Owner " << 1 << " have " << name << " disk.\n";
         cout << " " << endl;
-    }
-    int number = lib.amount(1);
+    }else cout << " There is no such disk. \n";
+    int number = lib.amount(8);
     if(number > 0){
         cout << "Owner " << 1 << " have " << number << " disks.\n";
         cout << " " << endl;
     }else if (number = 0){
         cout << "Owner " << 1 << " have " << number << " disk.\n";
         cout << " " << endl;
-    }
-    int owner = lib.where ("MRA");
+    }else cout << "There is no such owner. \n";
+    int owner = lib.where ("MRaa");
     if(owner != -1){
         cout << "Disk " << " MRA " << " depends owner " << owner << endl;
         cout << " " << endl;
-    }
-    lib.transfer("MRA", 3, 1);
+    }else cout << "There is no such disk. \n";
+    lib.transfer("MRa", 5);
     lib.print();
-    //lib.where ("MRA");
-    //lib.print();
     return 0;
 }

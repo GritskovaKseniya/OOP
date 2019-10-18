@@ -82,13 +82,14 @@ bool CDcollection::owner_exists(int idChaild){
 }
 
 int CDcollection::amount(int idPerson){
-    int count_disk = 0; /// Счетчик дисков.
-    for(int k = 0; k < nCD; k++){
-        if (disk_owner[k]== idPerson){
-            count_disk++;
+        int count_disk = 0; /// Счетчик дисков.
+        for(int k = 0; k < nCD; k++){
+            if (disk_owner[k]== idPerson){
+                count_disk++;
+            }
         }
-    }
-    return count_disk;
+        return count_disk;
+
 }
 
 void CDcollection::print(){
