@@ -4,7 +4,20 @@
 
 using namespace std;
 
-CDcollection::CDcollection(int nPerson, int nCD){
+/*CDcollection::CDcollection(int nPerson, int nCD){
+   /* this->nPerson = nPerson;
+    this->nCD = nCD;
+    disk_name = new char*[nCD]; /// Массив имен дисков. (размер = количество дисков) Заполняется постепенно, изначально пуст.
+    disk_owner = new int[nCD]; /// Массив владельцев дисков. (размер = количество дисков) 
+    /// Заполняем массивы (наличие владельца у диска, наличие имени)
+    for(int i = 0; i < nCD; ++i){
+        disk_owner[i] = -1; /// Диск никому не принадлежит.
+        disk_name[i] = 0; /// У диска нет имени.
+    }
+    initialize(nPerson, nCD);
+}*/
+
+void CDcollection::initialize(int nPerson, int nCD){
     this->nPerson = nPerson;
     this->nCD = nCD;
     disk_name = new char*[nCD]; /// Массив имен дисков. (размер = количество дисков) Заполняется постепенно, изначально пуст.
@@ -48,17 +61,17 @@ char *CDcollection::nameCD(int idPerson, int i){
 }
 
 void CDcollection::transfer(char *CDname, int idParent, int idChild){
-    bool exisits = owner_exists(idChild);
+    bool exisits = owner_exists(idChild); /// Проверка idChild на существование.
     int index = index_name(CDname); /// Проверка наличия имени диска в коллекции.
     if(exisits == true){
         if(index != -1 && disk_owner[index] == idParent){ /// Проверка принадлежности данного диска к данному владельцу. 
-        disk_owner[index] = idChild; /// Передача диска новому владельцу.
+            disk_owner[index] = idChild; /// Передача диска новому владельцу.
         }else cerr << "ERROR: disk name or owner wrong.\n"; 
     }else cerr << "ERROR: new owner don't exists.\n";
 
 }
 
-/// Перегрузка функции. ??????????????????????????????
+/// Перегрузка функции.
 void CDcollection::transfer(char *CDname, int idChild){
     int idParent = where(CDname);
     transfer(CDname, idParent, idChild);

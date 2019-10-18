@@ -6,10 +6,14 @@ class CDcollection
 {
     public:
         /// Хранилище двух массивов: владельцев и колекции дисков.
-        CDcollection(int nPerson, int nCD);
-        CDcollection(){CDcollection(5,15);}
+        CDcollection(int nPerson, int nCD){initialize(nPerson, nCD);}
+        CDcollection(){
+            int nPerson = 5; int nCD = 15;
+            initialize(nPerson, nCD);
+        }
         /// Деструктор. Освобождает использованные объектом ресурсов и удаление нестатических переменных объекта.
         ~CDcollection();
+        void initialize(int nPerson, int nCD);
         /// Добавить новый диск.
         void add(char *CDname, int idPerson);
         /// Дать дсик idPerson.

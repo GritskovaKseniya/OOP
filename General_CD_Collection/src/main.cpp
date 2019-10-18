@@ -9,10 +9,10 @@ int main() {
     setlocale(LC_ALL, "Russian");
 
     /// объявляем переменные и присваиваем им значения.
-    int nPerson = 6;
+    /*int nPerson = 6;
     int nCD = 15;
-    CDcollection lib(nPerson, nCD);
-    /// CDcollection lib(nPerson, nCD); тоже самое, что и в строке выше.
+    CDcollection lib(nPerson, nCD);*/
+    CDcollection lib;
 
     lib.add("Abra", 15); 
     lib.add("Iooio", 1);
@@ -38,7 +38,7 @@ int main() {
         cout << "Disk " << " MRA " << " depends owner " << owner << endl;
         cout << " " << endl;
     }else cout << "There is no such disk. \n";
-    lib.transfer("MRa", 5);
+    lib.transfer("MRA", 1);
     lib.print();
     return 0;
 }
