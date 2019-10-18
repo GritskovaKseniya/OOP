@@ -11,30 +11,36 @@ int main() {
     /// объявляем переменные и присваиваем им значения.
     int nPerson = 6;
     int nCD = 15;
-    int i;
     CDcollection lib(nPerson, nCD);
     /// CDcollection lib(nPerson, nCD); тоже самое, что и в строке выше.
 
     lib.add("Abra", 15); 
-    //lib.print();
     lib.add("Iooio", 1);
     lib.add("lala", 1);
     lib.add("CDA", 2);
     lib.add("MRA", 3);
     lib.print();
-    //lib.nameCD(1, 0);
-    //lib.amount(1);
-    //lib.where ("Abra");
+    char* name = lib.nameCD(1, 0);
+    if(name != 0){
+        cout << "Owner " << 1 << " have " << name << " disk.\n";
+        cout << " " << endl;
+    }
+    int number = lib.amount(1);
+    if(number > 0){
+        cout << "Owner " << 1 << " have " << number << " disks.\n";
+        cout << " " << endl;
+    }else if (number = 0){
+        cout << "Owner " << 1 << " have " << number << " disk.\n";
+        cout << " " << endl;
+    }
+    int owner = lib.where ("MRA");
+    if(owner != -1){
+        cout << "Disk " << " MRA " << " depends owner " << owner << endl;
+        cout << " " << endl;
+    }
     lib.transfer("MRA", 3, 1);
     lib.print();
-    lib.amount(1);
-    //lib.where ("Abra");
+    //lib.where ("MRA");
     //lib.print();
-    // Abra : 1
-    // Iooio : 1
-    
-    
-    // "Abra"
-
     return 0;
 }

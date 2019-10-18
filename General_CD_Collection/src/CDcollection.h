@@ -7,7 +7,7 @@ class CDcollection
     public:
         /// Хранилище двух массивов: владельцев и колекции дисков.
         CDcollection(int nPerson, int nCD);
-        CDcollection();
+        CDcollection(){CDcollection(5,15);}
         /// Деструктор. Освобождает использованные объектом ресурсов и удаление нестатических переменных объекта.
         ~CDcollection();
         /// Добавить новый диск.
@@ -16,7 +16,10 @@ class CDcollection
         void transfer(char *CDname, int idParent, int idChild); 
         void transfer(char *CDname, int idChild);
         /// У кого находится диск.
-        int where (char *CDname); 
+        int where (char *CDname){
+            int i = index_name (CDname);
+            return disk_owner[i]; /// Возвращаем номер владельца диска
+        }
         /// Сколько дисков у idPerson.
         int amount(int idPerson); 
         /// Читает у кого какой диск находится. Название i-того диска у idPerson. Выводим имя конкретного диска по имени владельца и номеру диска.
@@ -35,7 +38,7 @@ class CDcollection
         char** disk_name;
         /// Возвращаем индекс по имени.
         int index_name (char *CDname);
-        /// Возвращаем индекс по владельцу.
-        int index_owner (int idParent, int m);
+        /// Проверка на существование.
+        bool owner_exists(int idChaild);
 
 };
