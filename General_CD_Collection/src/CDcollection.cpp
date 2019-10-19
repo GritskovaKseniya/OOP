@@ -35,18 +35,19 @@ CDcollection::~CDcollection(){
 }
 
 void CDcollection::add(char *CDname, int idPerson){
-    if((idPerson < nPerson)&&(idPerson >= 0)){ /// Если номер владельца больше или равен нулю и меньше колчества владельцев
-        for(int i = 0; i < nCD; ++i){
-            if(disk_owner[i] == -1){ /// Если диск никому не принадлежит.
-                disk_owner[i] = idPerson; /// Записываем владельца в свободную ячейку массива.
-                disk_name[i] = CDname; /// Записываем имя диска в свободную ячейку массива.
-                break;
-            }
-        } 
-    }else
-    {
-        cerr << "Incorrect idPerson\n";
-    } 
+    bool exists = exists_name (CDname);
+    if(exists == false){
+        if((idPerson < nPerson)&&(idPerson >= 0)){ /// Если номер владельца больше или равен нулю и меньше колчества владельцев
+            for(int i = 0; i < nCD; ++i){
+                if(disk_owner[i] == -1){ /// Если диск никому не принадлежит.
+                    disk_owner[i] = idPerson; /// Записываем владельца в свободную ячейку массива.
+                    disk_name[i] = CDname; /// Записываем имя диска в свободную ячейку массива.
+                    break;
+                }
+            } 
+        }else cerr << "Incorrect idPerson\n";
+    } cerr << "That name already exists\n";
+ 
 }
 
 char *CDcollection::nameCD(int idPerson, int i){
@@ -73,9 +74,9 @@ int CDcollection:: where (char *CDname){
 }
 
 void CDcollection::transfer(char *CDname, int idParent, int idChild){
-    bool exisits = owner_exists(idChild); /// Проверка idChild на существование.
+    bool exists = owner_exists(idChild); /// Проверка idChild на существование.
     int index = index_name(CDname); /// Проверка наличия имени диска в коллекции.
-    if(exisits == true){
+    if(exists == true){
         if(index != -1 && disk_owner[index] == idParent){ /// Проверка принадлежности данного диска к данному владельцу. 
             disk_owner[index] = idChild; /// Передача диска новому владельцу.
         }else cerr << "ERROR: disk name or owner wrong.\n"; 
@@ -101,8 +102,8 @@ int CDcollection::index_name (char *CDname){
 bool CDcollection::exists_name (char *CDname){
     for(int i = 0; i < nCD; ++i){
         if(disk_name[i] == CDname){ /// Сравниваем строки.     
-            cout << "exists_name disk_name [i] " << disk_name [i] << endl;
-            return true; /// Возвращаем индекс элемента массива, в котором лежит имя. оно = индексу владельца.
+            //cout << "exists_name disk_name [i] " << disk_name [i] << endl;
+            return true;
         } 
     }
     return false;

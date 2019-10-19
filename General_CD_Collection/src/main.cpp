@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "CDcollection.h"
 
@@ -44,17 +46,19 @@ using namespace std;
     lib.print();
     return 0;*/
 
-void add(CDcollection* lib);
+/*void add(CDcollection* lib);
 void transfer(CDcollection* lib);
 void where(CDcollection* lib);
 void amount(CDcollection* lib);
 void nameCD(CDcollection* lib);
-void print(CDcollection* lib);
+void print(CDcollection* lib);*/
 
 int main() {
     int answer = -1;
     int nPerson = 15;
     int nCD = 6;
+    char CDname[50];
+    int idPerson, idParent, idChild, i;
     /*cout << "Input number of disks (more than 0): "; 
     cin >> nCD;
     cout << "Input number of owner (more than 0): "; 
@@ -74,27 +78,49 @@ int main() {
 
         switch (answer) {
             case 1:
-                add(lib);
+                cout << "Input disk name: "; cin >> CDname;
+                cout << "Input owner: "; cin >> idPerson;
+                lib->add(CDname, idPerson);
                 break;
 
             case 2:
-                transfer(lib);
+                cout << "Input disk name: "; cin >> CDname;
+                cout << "Input disk owner: "; cin >> idParent;
+                cout << "Input disk new owner: "; cin >> idChild;
+                lib->transfer(CDname, idParent, idChild);
                 break;
             
             case 3:
-                where(lib);
+                cout << "Input disk name: ";cin >> CDname;
+                int owner = lib->where(CDname);
+                if(owner != -1){
+                    cout << "Disk " << CDname << " depends owner " << owner << endl; cout << " " << endl;
+                }else if(owner = -1){
+                    cout << "The disk doesn't exist. \n";
+                }else cout << "UNKNOWN ERROR\n";
                 break;
             
             case 4:
-                amount(lib);
+                cout << "Input owner number: "; cin >> idPerson;
+                int number = lib->amount(idPerson);
+                if(number > 0){
+                    cout << "Owner " << idPerson << " have " << number << " disks.\n"; cout << " " << endl;
+                }else if (number = 0){
+                    cout << "Owner " << 1 << " have " << number << " disk.\n"; cout << " " << endl;
+                }else cout << "There is no such owner. \n";
                 break;
             
             case 5:
-                nameCD(lib);
+                cout << "Input owner number: "; cin >> idPerson;
+                cout << "Input number disk: "; cin >> i;
+                char* name = lib->nameCD(idPerson, i);
+                if(name != 0){
+                    cout << "Owner " << idPerson << " have " << name << " disk.\n"; cout << " " << endl;
+                }else cout << " There is no such disk. \n";
                 break;
             
             case 6:
-                print(lib);
+                lib->print();
                 break;
         
             default:
@@ -105,8 +131,9 @@ int main() {
     delete lib;
     return 0;
 }
-void add(CDcollection* lib) {
-    char *CDname;
+
+/*void add(CDcollection* lib) {
+    char CDname[50];
     int idPerson;
 
     cout << "Input disk name: "; 
@@ -119,8 +146,8 @@ void add(CDcollection* lib) {
 
 ///Продумать перегрузку
 void transfer(CDcollection* lib) {
-    char *CDname;
-     int idParent, idChild;
+    char CDname[50];
+    int idParent, idChild;
     
     cout << "Input disk name: "; 
     cin >> CDname;
@@ -133,7 +160,7 @@ void transfer(CDcollection* lib) {
 }
 
 void where(CDcollection* lib) {
-    char *CDname;
+    char CDname[50];
 
     cout << "Input disk name: "; 
     cin >> CDname;
@@ -162,4 +189,4 @@ void nameCD(CDcollection* lib) {
 }
 void print(CDcollection* lib) {
     lib->print();
-}
+}*/
