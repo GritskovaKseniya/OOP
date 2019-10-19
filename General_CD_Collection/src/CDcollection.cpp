@@ -36,7 +36,7 @@ CDcollection::~CDcollection(){
 
 void CDcollection::add(char *CDname, int idPerson){
     bool exists = exists_name (CDname);
-    if(exists == false){
+    if(exists == false){ /// Проверка имени на уникальность.
         if((idPerson < nPerson)&&(idPerson >= 0)){ /// Если номер владельца больше или равен нулю и меньше колчества владельцев
             for(int i = 0; i < nCD; ++i){
                 if(disk_owner[i] == -1){ /// Если диск никому не принадлежит.

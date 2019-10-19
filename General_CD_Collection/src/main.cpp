@@ -57,8 +57,8 @@ int main() {
     int answer = -1;
     int nPerson = 15;
     int nCD = 6;
-    char CDname[50];
-    int idPerson, idParent, idChild, i;
+    char CDname[50], *name;
+    int idPerson, idParent, idChild, i, owner, number;
     /*cout << "Input number of disks (more than 0): "; 
     cin >> nCD;
     cout << "Input number of owner (more than 0): "; 
@@ -92,7 +92,7 @@ int main() {
             
             case 3:
                 cout << "Input disk name: ";cin >> CDname;
-                int owner = lib->where(CDname);
+                owner = lib->where(CDname);
                 if(owner != -1){
                     cout << "Disk " << CDname << " depends owner " << owner << endl; cout << " " << endl;
                 }else if(owner = -1){
@@ -102,7 +102,7 @@ int main() {
             
             case 4:
                 cout << "Input owner number: "; cin >> idPerson;
-                int number = lib->amount(idPerson);
+                number = lib->amount(idPerson);
                 if(number > 0){
                     cout << "Owner " << idPerson << " have " << number << " disks.\n"; cout << " " << endl;
                 }else if (number = 0){
@@ -113,7 +113,7 @@ int main() {
             case 5:
                 cout << "Input owner number: "; cin >> idPerson;
                 cout << "Input number disk: "; cin >> i;
-                char* name = lib->nameCD(idPerson, i);
+                name = lib->nameCD(idPerson, i);
                 if(name != 0){
                     cout << "Owner " << idPerson << " have " << name << " disk.\n"; cout << " " << endl;
                 }else cout << " There is no such disk. \n";
