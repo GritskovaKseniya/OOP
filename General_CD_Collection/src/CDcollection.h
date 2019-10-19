@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+#include <cstring>
+
 using namespace std;
 
 class CDcollection
@@ -20,10 +23,7 @@ class CDcollection
         void transfer(char *CDname, int idParent, int idChild); 
         void transfer(char *CDname, int idChild);
         /// У кого находится диск.
-        int where (char *CDname){
-            int i = index_name (CDname);
-            return disk_owner[i]; /// Возвращаем номер владельца диска
-        }
+        int where (char *CDname);
         /// Сколько дисков у idPerson.
         int amount(int idPerson); 
         /// Читает у кого какой диск находится. Название i-того диска у idPerson. Выводим имя конкретного диска по имени владельца и номеру диска.
@@ -42,7 +42,8 @@ class CDcollection
         char** disk_name;
         /// Возвращаем индекс по имени.
         int index_name (char *CDname);
-        /// Проверка на существование.
+        /// Проверка существования владельца.
         bool owner_exists(int idChaild);
-
+        /// Проверка существования имени.
+        bool exists_name (char *CDname);
 };

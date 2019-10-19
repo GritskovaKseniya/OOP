@@ -60,6 +60,18 @@ char *CDcollection::nameCD(int idPerson, int i){
     return 0;
 }
 
+int CDcollection:: where (char *CDname){
+    bool name = exists_name(CDname);
+    if(name == true){
+        cout << "NAME = TRUE, I AM IN WHERE\n";
+        int i = index_name (CDname);
+        return disk_owner[i]; /// Возвращаем номер владельца диска
+    }else if(name == false) {
+        cerr << "Incorrect disk name\n";
+        return -1;
+    }
+}
+
 void CDcollection::transfer(char *CDname, int idParent, int idChild){
     bool exisits = owner_exists(idChild); /// Проверка idChild на существование.
     int index = index_name(CDname); /// Проверка наличия имени диска в коллекции.
@@ -84,6 +96,16 @@ int CDcollection::index_name (char *CDname){
         } 
     }
     return -1;
+}
+
+bool CDcollection::exists_name (char *CDname){
+    for(int i = 0; i < nCD; ++i){
+        if(disk_name[i] == CDname){ /// Сравниваем строки.     
+            cout << "exists_name disk_name [i] " << disk_name [i] << endl;
+            return true; /// Возвращаем индекс элемента массива, в котором лежит имя. оно = индексу владельца.
+        } 
+    }
+    return false;
 }
 
 /// Проверяем idChaild на существование.
