@@ -42,6 +42,8 @@ void CDcollection::add(char *CDname, int idPerson){
                 if(disk_owner[i] == -1){ /// Если диск никому не принадлежит.
                     disk_owner[i] = idPerson; /// Записываем владельца в свободную ячейку массива.
                     disk_name[i] = CDname; /// Записываем имя диска в свободную ячейку массива.
+                    disk_name[i] = new char[strlen(CDname)+1];
+                    strcpy(disk_name[i], CDname);
                     break;
                 }
             } 
