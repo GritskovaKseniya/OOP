@@ -4,19 +4,6 @@
 
 using namespace std;
 
-/*CDcollection::CDcollection(int nPerson, int nCD){
-   /* this->nPerson = nPerson;
-    this->nCD = nCD;
-    disk_name = new char*[nCD]; /// Массив имен дисков. (размер = количество дисков) Заполняется постепенно, изначально пуст.
-    disk_owner = new int[nCD]; /// Массив владельцев дисков. (размер = количество дисков) 
-    /// Заполняем массивы (наличие владельца у диска, наличие имени)
-    for(int i = 0; i < nCD; ++i){
-        disk_owner[i] = -1; /// Диск никому не принадлежит.
-        disk_name[i] = 0; /// У диска нет имени.
-    }
-    initialize(nPerson, nCD);
-}*/
-
 void CDcollection::initialize(int nPerson, int nCD){
     this->nPerson = nPerson;
     this->nCD = nCD;
