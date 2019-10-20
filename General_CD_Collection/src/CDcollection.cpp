@@ -42,7 +42,7 @@ void CDcollection::add(char *CDname, int idPerson){
                 if(disk_owner[i] == -1){ /// Если диск никому не принадлежит.
                     disk_owner[i] = idPerson; /// Записываем владельца в свободную ячейку массива.
                     disk_name[i] = CDname; /// Записываем имя диска в свободную ячейку массива.
-                    disk_name[i] = new char[strlen(CDname)+1];
+                    disk_name[i] = new char[strlen(CDname)+1]; 
                     strcpy(disk_name[i], CDname);
                     break;
                 }
@@ -94,7 +94,7 @@ void CDcollection::transfer(char *CDname, int idChild){
 
 int CDcollection::index_name (char *CDname){
     for(int i = 0; i < nCD; ++i){
-        if(disk_name[i] == CDname){ /// Сравниваем строки.     
+        if(strcmp(disk_name[i], CDname) == 0){ /// Сравниваем строки.     
             return i; /// Возвращаем индекс элемента массива, в котором лежит имя. оно = индексу владельца.
         } 
     }
@@ -103,7 +103,7 @@ int CDcollection::index_name (char *CDname){
 
 bool CDcollection::exists_name (char *CDname){
     for(int i = 0; i < nCD; ++i){
-        if(disk_name[i] == CDname){ /// Сравниваем строки.     
+        if(strcmp(disk_name[i], CDname) == 0){ /// Сравниваем строки.     
             //cout << "exists_name disk_name [i] " << disk_name [i] << endl;
             return true;
         } 
