@@ -8,14 +8,10 @@ using namespace std;
 
 int main() {
     int answer = -1;
-    int nPerson;
-    int nCD;
+    int nPerson = 15;
+    int nCD = 6;
     char CDname[50], *name;
     int idPerson, idParent, idChild, i, owner, number;
-    cout << "Input number of disks (more than 0): "; 
-    cin >> nCD;
-    cout << "Input number of owner (more than 0): "; 
-    cin >> nPerson;
     CDcollection* lib = new CDcollection(nPerson, nCD);    
 
     while (answer != 0) {
