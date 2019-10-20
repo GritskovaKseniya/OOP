@@ -30,6 +30,9 @@ void CDcollection::initialize(int nPerson, int nCD){
 }
 
 CDcollection::~CDcollection(){
+    for(int i = 0; i < nCD; ++i){
+        delete[] disk_name[i];
+    }
     delete[] disk_name;
     delete[] disk_owner;
 }
@@ -41,14 +44,17 @@ void CDcollection::add(char *CDname, int idPerson){
             for(int i = 0; i < nCD; ++i){
                 if(disk_owner[i] == -1){ /// Если диск никому не принадлежит.
                     disk_owner[i] = idPerson; /// Записываем владельца в свободную ячейку массива.
-                    disk_name[i] = CDname; /// Записываем имя диска в свободную ячейку массива.
+                     /// Записываем имя диска в свободную ячейку массива.
                     disk_name[i] = new char[strlen(CDname)+1]; 
                     strcpy(disk_name[i], CDname);
                     break;
                 }
             } 
         }else cerr << "Incorrect idPerson\n";
-    } cerr << "That name already exists\n";
+    }else
+    {
+     cerr << "That name already exists\n";
+    }
  
 }
 
@@ -66,7 +72,6 @@ char *CDcollection::nameCD(int idPerson, int i){
 int CDcollection:: where (char *CDname){
     bool name = exists_name(CDname);
     if(name == true){
-        cout << "NAME = TRUE, I AM IN WHERE\n";
         int i = index_name (CDname);
         return disk_owner[i]; /// Возвращаем номер владельца диска
     }else if(name == false) {
@@ -94,7 +99,7 @@ void CDcollection::transfer(char *CDname, int idChild){
 
 int CDcollection::index_name (char *CDname){
     for(int i = 0; i < nCD; ++i){
-        if(strcmp(disk_name[i], CDname) == 0){ /// Сравниваем строки.     
+        if(disk_name[i] != 0 && strcmp(disk_name[i], CDname) == 0){ /// Сравниваем строки.     
             return i; /// Возвращаем индекс элемента массива, в котором лежит имя. оно = индексу владельца.
         } 
     }
@@ -103,9 +108,8 @@ int CDcollection::index_name (char *CDname){
 
 bool CDcollection::exists_name (char *CDname){
     for(int i = 0; i < nCD; ++i){
-        if(strcmp(disk_name[i], CDname) == 0){ /// Сравниваем строки.     
-            //cout << "exists_name disk_name [i] " << disk_name [i] << endl;
-            return true;
+        if(disk_name[i] != 0 && strcmp(disk_name[i], CDname) == 0){ /// Сравниваем строки.     
+            return true; /// Если имя существует - возвращаем true.
         } 
     }
     return false;
