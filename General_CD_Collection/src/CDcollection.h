@@ -16,7 +16,6 @@ class CDcollection
         }
         /// Деструктор. Освобождает использованные объектом ресурсов и удаление нестатических переменных объекта.
         ~CDcollection();
-        void initialize(int nPerson, int nCD);
         /// Добавить новый диск.
         void add(char *CDname, int idPerson);
         /// Дать дсик idPerson.
@@ -46,4 +45,6 @@ class CDcollection
         bool owner_exists(int idChaild);
         /// Проверка существования имени.
         bool exists_name (char *CDname);
+        /// Функция для конструкторов.
+        void initialize(int nPerson, int nCD);
 };
