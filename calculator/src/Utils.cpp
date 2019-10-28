@@ -3,19 +3,25 @@
 
 bool apply_op(char op, double num1, double num2, double* result)
 {
-    if (op == '+')
+    switch (op)
     {
+    case '+':
         *result = num1 + num2;
-    }
-    else if (op == '-')
-    {
+        break;
+    case '-':
         *result = num1 - num2;
-    }
-    else
-    {
+        break;
+    case '*':
+        *result = num1 * num2;
+        break;
+    case '/':
+        *result = num1 / num2;
+        break;
+    default:
         return false;
+        break;
     }
-
+    
     return true;
 }
 /*
