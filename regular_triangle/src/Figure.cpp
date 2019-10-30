@@ -7,6 +7,10 @@ Figure::Figure(int c, int x, int y){
     visible = false;
 }
 
+Figure::~Figure(){
+
+}
+
 void Figure::move(int dx, int dy){
     /// Если фигура видимая - сдвигаем параметры на дельту и рисуем, иначе просто сдвигаем параметры и запоминаем их.
     x+= dx;

@@ -3,10 +3,24 @@
 #include <stdio.h>
 
 #include "Triangle.h"
+#include "FilledTriangle.h"
 
 using namespace std;
 
 int main() {
-    int c, x, y, length, alfa;
-    Triangle* RTr = new Triangle(c, x, y, length, alfa);
+    int c, x, y, length, alfa, f;
+    //Figure* figure;
+    c = 455;
+    x = 2;
+    y = 1;
+    length = 4;
+    alfa = 47;
+    f = 17; 
+    Triangle* triangle = new Triangle(c, x, y, length, alfa);
+    FilledTriangle* filledTriangle = new FilledTriangle(c, x, y, length, alfa, f);
+    float perimether, area;
+
+    delete triangle;
+    delete filledTriangle;
+    return 0;
 }
