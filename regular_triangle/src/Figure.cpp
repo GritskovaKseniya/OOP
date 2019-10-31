@@ -45,3 +45,10 @@ bool Figure::isVisible() const{
     return visible;
 }
 
+
+Point Figure::getCenter(){
+    Point center;
+    center.x = x;
+    center.y = y;
+    return center;
+}

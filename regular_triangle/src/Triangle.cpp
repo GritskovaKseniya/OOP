@@ -19,16 +19,6 @@ Triangle::~Triangle(){
 
 }
 
-void Triangle::draw() const {
-    cout << " The TRIAHGLE draw " << endl;
-    cout << " Center (x;y): (" << x << ";" << y << ") " << endl;
-    cout << " The length of a side: " << length << endl;
-    cout << " Angle of rotation: " << alfa << endl;
-    cout << " Visible: " << isVisible() << endl;
-    cout << " Border color: " << getBorderColor() << endl;
-    cout << " END "<<endl;
-}
-
 void Triangle::clacParms(float& perimeter, float& area) const{
     perimeter = 3*length;
     area = (length*length*sqrt(3))/4;
@@ -47,4 +37,22 @@ bool Triangle::correctParametr(int length, int alfa){
     if(length > 0){
         return true;
     }
+}
+
+int Triangle::getAlfa() const{
+    return alfa;
+}
+
+int Triangle::getLength() const{
+    return length;
+}
+
+void Triangle::draw() const {
+    cout << " The TRIAHGLE draw " << endl;
+    cout << " Center (x;y): (" << x << ";" << y << ") " << endl;
+    cout << " The length of a side: " << length << endl;
+    cout << " Angle of rotation: " << alfa << endl;
+    cout << " Visible: " << isVisible() << endl;
+    cout << " Border color: " << getBorderColor() << endl;
+    cout << " END "<<endl;
 }

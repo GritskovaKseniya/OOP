@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "Figure.h"
 #include "Triangle.h"
 #include "FilledTriangle.h"
 
@@ -19,6 +20,13 @@ int main() {
     Triangle* triangle = new Triangle(c, x, y, length, alfa);
     FilledTriangle* filledTriangle = new FilledTriangle(c, x, y, length, alfa, f);
     float perimether, area;
+
+    triangle->setVisible();
+    cout << " Center point: (" << triangle->getCenter().x << ":" << triangle->getCenter().y << ") " << endl;
+    triangle->move(3,3);
+    cout << " New center point: (" << triangle->getCenter().x << ":" << triangle->getCenter().y << ") " << endl;
+
+    //triangle->setSizes();
 
     delete triangle;
     delete filledTriangle;

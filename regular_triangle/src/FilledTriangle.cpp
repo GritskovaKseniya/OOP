@@ -19,3 +19,13 @@ void FilledTriangle::setBorderColor(int c){
     }
 
 }
+
+void FilledTriangle::draw() const {
+    cout << " The FILLED TRIAHGLE draw " << endl;
+    cout << " Center (x;y): (" << x << ";" << y << ") " << endl;
+    cout << " The length of a side: " << getLength() << endl;
+    cout << " Angle of rotation: " << getAlfa() << endl;
+    cout << " Visible: " << isVisible() << endl;
+    cout << " Border color: " << getBorderColor() << endl;
+    cout << " END "<<endl;
+}

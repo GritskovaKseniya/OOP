@@ -4,6 +4,10 @@
 
 using namespace std;
 
+struct Point{
+      int x, y;
+};
+
 class Figure{
 public:
       /**
@@ -28,7 +32,9 @@ public:
       // Признак видимости.
       bool isVisible() const; 
       // Вычислить периметр и площадь фигуры.
-      virtual void clacParms(float& perimeter, float& area) const;
+      virtual void clacParms(float& perimeter, float& area) const = 0;
+      // Получаем центральную точку
+      Point getCenter();
                   
 private:
       // цвет
@@ -40,7 +46,8 @@ protected:
       // базоваяя точка
       int x,y; 
 
-      virtual void draw() const;
+      virtual void draw() const = 0;
 };
+
 
 
