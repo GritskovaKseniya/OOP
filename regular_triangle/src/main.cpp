@@ -22,11 +22,11 @@ int main() {
     float perimether, area;
 
     triangle->setVisible();
-    cout << " Center point: (" << triangle->getCenter().x << ":" << triangle->getCenter().y << ") " << endl;
-    triangle->move(3,3);
-    cout << " New center point: (" << triangle->getCenter().x << ":" << triangle->getCenter().y << ") " << endl;
 
-    //triangle->setSizes();
+    triangle->move(3,3);
+
+
+    triangle->setSizes(7, 40);
 
     delete triangle;
     delete filledTriangle;

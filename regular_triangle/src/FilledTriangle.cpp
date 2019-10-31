@@ -9,15 +9,25 @@ FilledTriangle::~FilledTriangle(){
 }
 
 void FilledTriangle::setFillColor(int f){
-
+    this->f = f;
+    if(visible == true){ 
+        draw();
+    }
 }
     
 void FilledTriangle::setBorderColor(int c){
     // Если цвет границ и заполнения не равны, меняем его.
     if(c != this->f){
         c = f;
+        if(visible == true){ 
+            draw();
+        }
     }
 
+
+}
+int FilledTriangle::getFillColor() const {
+    return f;
 }
 
 void FilledTriangle::draw() const {
@@ -27,5 +37,7 @@ void FilledTriangle::draw() const {
     cout << " Angle of rotation: " << getAlfa() << endl;
     cout << " Visible: " << isVisible() << endl;
     cout << " Border color: " << getBorderColor() << endl;
-    cout << " END "<<endl;
+    cout << " Fill color: " << getFillColor() << endl;
+    cout << " END "<< endl;
 }
+

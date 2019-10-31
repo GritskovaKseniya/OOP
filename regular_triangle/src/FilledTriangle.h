@@ -12,11 +12,14 @@ public:
     ~FilledTriangle();
     // Изменяет цвет заполнения.
     void setFillColor(int f);
+
+    int getFillColor() const;
     /// Изменение цвет аграницы.
     virtual void setBorderColor(int c);
 private:
     // Цвет заполнения фигуры.
     int f;
+    bool visible = isVisible();
 protected:
     virtual void draw() const;
 };
