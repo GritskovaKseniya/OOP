@@ -39,5 +39,6 @@ void FilledTriangle::draw() const {
     cout << " Border color: " << getBorderColor() << endl;
     cout << " Fill color: " << getFillColor() << endl;
     cout << " END "<< endl;
+    cout << " " << endl;
 }
 

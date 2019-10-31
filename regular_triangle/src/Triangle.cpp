@@ -56,4 +56,5 @@ void Triangle::draw() const {
     cout << " Visible: " << isVisible() << endl;
     cout << " Border color: " << getBorderColor() << endl;
     cout << " END "<<endl;
+    cout << " " << endl;
 }
