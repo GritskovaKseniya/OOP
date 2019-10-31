@@ -25,8 +25,17 @@ int main() {
 
     triangle->move(3,3);
 
+    triangle->clacParms(perimether, area);
+    cout << " P = " << perimether << endl;
+    cout << " S = " << area << endl;
+    cout << " " << endl;
 
     triangle->setSizes(7, 40);
+
+    triangle->clacParms(perimether, area);
+    cout << " P = " << perimether << endl;
+    cout << " S = " << area << endl;
+    cout << " " << endl;
 
     delete triangle;
     delete filledTriangle;
