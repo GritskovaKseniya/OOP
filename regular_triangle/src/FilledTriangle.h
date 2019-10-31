@@ -13,7 +13,7 @@ public:
     // Изменяет цвет заполнения.
     void setFillColor(int f);
     /// Изменение цвет аграницы.
-    void setBorderColor(int с);
+    void setBorderColor(int c);
 private:
     // Цвет заполнения фигуры.
     int f;
