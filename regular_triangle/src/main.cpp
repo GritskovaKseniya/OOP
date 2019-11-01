@@ -40,6 +40,8 @@ int main() {
     cout << k << endl;
     cout << " " << endl;
 
+    filledTriangle->move(0,0);
+
     /*triangle->move(3,3);
 
     triangle->clacParms(perimether, area);

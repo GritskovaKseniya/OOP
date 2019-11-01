@@ -20,7 +20,6 @@ private:
     // Цвет заполнения фигуры.
     int f;
     bool visible = isVisible();
-    int k = setBorderColor(int c);
 protected:
     virtual void draw() const;
 };
