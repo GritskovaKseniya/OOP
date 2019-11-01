@@ -17,14 +17,10 @@ void FilledTriangle::setFillColor(int f){
     
 void FilledTriangle::setBorderColor(int c){
     // Если цвет границ и заполнения не равны, меняем его.
-    if(c != this->f){
-        setBorderColor(f);
+        this->f = c;
         if(visible == true){ 
             draw();
         }
-    }
-
-
 }
 int FilledTriangle::getFillColor() const {
     return f;

@@ -25,16 +25,22 @@ int main() {
     triangle->setVisible();
     filledTriangle->setVisible();
 
-    figure = triangle;
+    /*figure = triangle;
     cout << " NUMBER 1" << endl;
     figure->move(2,3);
 
     figure = filledTriangle;
     cout << " NUMBER 2" << endl;
     figure->move(3,4);
-    triangle->setVisible();
+    triangle->setVisible();*/
 
-    triangle->move(3,3);
+    cout << " Change Border Color " << endl;
+    filledTriangle->setBorderColor(c);
+    int k = filledTriangle->getBorderColor();
+    cout << k << endl;
+    cout << " " << endl;
+
+    /*triangle->move(3,3);
 
     triangle->clacParms(perimether, area);
     cout << " P = " << perimether << endl;
@@ -46,7 +52,7 @@ int main() {
     triangle->clacParms(perimether, area);
     cout << " P = " << perimether << endl;
     cout << " S = " << area << endl;
-    cout << " " << endl;
+    cout << " " << endl;*/
 
     delete triangle;
     delete filledTriangle;
