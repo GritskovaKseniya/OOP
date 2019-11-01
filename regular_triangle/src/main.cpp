@@ -19,8 +19,19 @@ int main() {
     f = 17; 
     Triangle* triangle = new Triangle(c, x, y, length, alfa);
     FilledTriangle* filledTriangle = new FilledTriangle(c, x, y, length, alfa, f);
+    Figure * figure;
     float perimether, area;
 
+    triangle->setVisible();
+    filledTriangle->setVisible();
+
+    figure = triangle;
+    cout << " NUMBER 1" << endl;
+    figure->move(2,3);
+
+    figure = filledTriangle;
+    cout << " NUMBER 2" << endl;
+    figure->move(3,4);
     triangle->setVisible();
 
     triangle->move(3,3);
