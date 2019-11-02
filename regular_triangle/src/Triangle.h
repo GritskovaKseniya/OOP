@@ -12,7 +12,7 @@ public:
   Triangle(int c, int x, int y, int length, int alfa);
   virtual ~Triangle();
   // Вычислить периметр и площадь фигуры.
-  virtual void clacParms(float& perimeter, float& area) const;
+  virtual void calcParms(float& perimeter, float& area) const;
   // Изменение размеров.
   void setSizes(int length, int alfa);
   // Получить угол.

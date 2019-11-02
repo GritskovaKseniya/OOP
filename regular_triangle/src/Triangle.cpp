@@ -19,7 +19,7 @@ Triangle::~Triangle(){
 
 }
 
-void Triangle::clacParms(float& perimeter, float& area) const{
+void Triangle::calcParms(float& perimeter, float& area) const{
     perimeter = 3*length;
     area = (length*length*sqrt(3))/4;
 }

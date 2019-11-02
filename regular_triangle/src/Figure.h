@@ -32,7 +32,7 @@ public:
       // Признак видимости.
       bool isVisible() const; 
       // Вычислить периметр и площадь фигуры.
-      virtual void clacParms(float& perimeter, float& area) const = 0;
+      virtual void calcParms(float& perimeter, float& area) const = 0;
       // Получаем центральную точку
       Point getCenter();
                   
