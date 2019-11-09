@@ -19,7 +19,6 @@ public:
 private:
     // Цвет заполнения фигуры.
     int f;
-    bool visible = isVisible();
 protected:
     virtual void draw() const;
 };

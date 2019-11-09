@@ -71,6 +71,7 @@ int main() {
     cout << " " << endl;
 
 
+
     figure = filledTriangle;
     cout << " Moving figure (filledtriangle)... " << endl;
     figure->move(3,4);

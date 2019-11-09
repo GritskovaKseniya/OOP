@@ -4,7 +4,7 @@
 Triangle::Triangle(int c, int x, int y, int length, int alfa):Figure(c, x, y){
     this->length = length;
     this->alfa = alfa;
-    bool CorP = correctParametr(length, alfa);
+    bool CorP = checkParameter(length, alfa);
     if( CorP == true){
         this->length = length;
         this->alfa = alfa;
@@ -25,16 +25,19 @@ void Triangle::calcParms(float& perimeter, float& area) const{
 }
 
 void Triangle::setSizes(int length, int alfa){
-    bool CorP = correctParametr(length, alfa);
+    bool CorP = checkParameter(length, alfa);
     if( CorP == true){
         this->length = length;
         this->alfa = alfa;
-        draw();
+        bool visible = isVisible();
+        if(visible == true){ 
+            draw();
+        }
     } else cerr << "That parametrs don't right\n";
     
 }
 
-bool Triangle::correctParametr(int length, int alfa){
+bool Triangle::checkParameter(int length, int alfa){
     if(length > 0){
         return true;
     }

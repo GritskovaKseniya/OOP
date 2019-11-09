@@ -25,7 +25,7 @@ private:
   /// Угол поворота.
   int alfa;
   /// Проверка корректности параметров.
-  bool correctParametr(int length, int alfa);
+  bool checkParameter(int length, int alfa);
 protected:
   virtual void draw() const;
 };
