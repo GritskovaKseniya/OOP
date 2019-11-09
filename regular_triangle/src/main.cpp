@@ -53,7 +53,7 @@ int main() {
     cout << " The length of a side  " << w << endl;
     cout << " " << endl;
     cout << " Change Border Color (filled triangle) " << endl;
-    filledTriangle->setBorderColor(c);
+    filledTriangle->setBorderColor(347);
     int l = filledTriangle->getBorderColor();
     int p = filledTriangle->getFillColor();
     cout << " Border Color " << l << endl;

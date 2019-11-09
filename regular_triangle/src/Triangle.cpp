@@ -29,8 +29,7 @@ void Triangle::setSizes(int length, int alfa){
     if( CorP == true){
         this->length = length;
         this->alfa = alfa;
-        bool visible = isVisible();
-        if(visible == true){ 
+        if(isVisible()){ 
             draw();
         }
     } else cerr << "That parametrs don't right\n";
