@@ -17,7 +17,7 @@ void FilledTriangle::setFillColor(int f){
     
 void FilledTriangle::setBorderColor(int c){
     // Если цвет границ и заполнения не равны, меняем цвет границ.
-        if (c != this->getFillColor()) {
+        if (c != f) {
             Triangle::setBorderColor(c);
         }
 }
