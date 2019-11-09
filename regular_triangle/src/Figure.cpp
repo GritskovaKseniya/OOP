@@ -19,7 +19,6 @@ void Figure::move(int dx, int dy){
         draw();
     }
 }
-
 void Figure::setBorderColor(int c){
     /// Если фигура видимая - сохраняем значение и вызываем метод draw.
     this->c = c;

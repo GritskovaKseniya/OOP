@@ -18,10 +18,8 @@ void FilledTriangle::setFillColor(int f){
     
 void FilledTriangle::setBorderColor(int c){
     // Если цвет границ и заполнения не равны, меняем цвет границ.
-        c = this->f;
-        bool visible = isVisible();
-        if(visible == true){ 
-            draw();
+        if (c != this->f) {
+            Triangle::setBorderColor(c);
         }
 }
 int FilledTriangle::getFillColor() const {

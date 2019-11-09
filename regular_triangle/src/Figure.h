@@ -24,7 +24,7 @@ public:
       // сместить фигуру на (dx,dy) – только видимую.
       void move(int dx, int dy); 
       // Установить цвет фигуры – только видимой.
-      void setBorderColor(int c); 
+      virtual void setBorderColor(int c); 
       // Получить цвет.
       int getBorderColor() const; 
       // Показать/спрятать фигуру.
