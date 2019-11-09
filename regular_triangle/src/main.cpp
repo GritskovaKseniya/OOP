@@ -83,6 +83,5 @@ int main() {
 
     delete triangle;
     delete filledTriangle;
-    delete figure;
     return 0;
 }

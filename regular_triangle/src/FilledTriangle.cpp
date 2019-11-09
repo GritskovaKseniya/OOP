@@ -10,15 +10,14 @@ FilledTriangle::~FilledTriangle(){
 
 void FilledTriangle::setFillColor(int f){
     this->f = f;
-    bool visible = isVisible();
-    if(visible == true){ 
+    if(isVisible()){ 
         draw();
     }
 }
     
 void FilledTriangle::setBorderColor(int c){
     // Если цвет границ и заполнения не равны, меняем цвет границ.
-        if (c != this->f) {
+        if (c != this->getBorderColor()) {
             Triangle::setBorderColor(c);
         }
 }
