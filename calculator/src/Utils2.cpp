@@ -1,4 +1,4 @@
-#include "ExpressionAnalyzerSt.h"
+/*#include "ExpressionAnalyzerSt.h"
 #include <string>
 
 bool apply_op(char op, double num1, double num2, double* result)
@@ -49,7 +49,7 @@ ParseResult eval(string expr)
     */
 
     // Токенайзер считывает строку "по словам (лексемам)"
-    Tokenizer tok = Tokenizer(expr);
+//    Tokenizer tok = Tokenizer(expr);
 
     // Первый токен должен быть числом
     /*Token t1 = tok.next_token();
@@ -60,7 +60,7 @@ ParseResult eval(string expr)
 
     double result = t1.get_number();
     */
-    ParseResult number1 = ReadTerm(&tokenizer);
+/*    ParseResult number1 = ReadTerm(&tokenizer);
     if(number1.is_error())
     {
         return number1;
@@ -103,4 +103,4 @@ ParseResult eval(string expr)
 
     return ParseResult(result);
 }
-
+*/

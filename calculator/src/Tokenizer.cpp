@@ -27,6 +27,14 @@ Token Tokenizer::next_token(){
     /// Условие: Счётчик не вышел за пределы строки.
     while (cur < expr.length())
     {
+        if(expr.at(cur) == '*' | expr.at(cur) == '/')
+        { 
+            /// Создаем результирующий токен и кладем в него значение символа.
+            Token result = Token(expr.at(cur)); 
+            /// Увеличиваем счетчик на еденицу.
+            cur++; 
+            return result;
+        }
         /// Проверяем значение символа на текущей позиции.
         if(expr.at(cur) == '+' | expr.at(cur) == '-')
         { 
@@ -36,11 +44,7 @@ Token Tokenizer::next_token(){
             cur++; 
             return result;
         }   
-
-        // Дописать логику для * и / 
-        // Учесть приоритет операций
         
-
         /// Проверяем, является ли наш символ числом с помощью функции isdigit (возвращает true, если число)
         if( cur < expr.length() && isdigit(expr.at(cur)) )
         {
