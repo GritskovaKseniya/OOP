@@ -4,6 +4,7 @@
 #include "ExpressionAnalyzerSt.h"
 
 using namespace std;
+//version 0.0.2
 
 // Отладка токенайзера
 void TestTokenizer(string expr);
