@@ -25,8 +25,73 @@ bool apply_op(char op, double num1, double num2, double* result)
     return true;
 }
 
-ParseResult ReadTerm(&tokenizer){
+    /// Написать логику функции ReadTerm(&tokenizer);
+    /// Запомнить позицию предыдущего токена и сделать функцию backup, которая вернет значение предыдущей позиции, чтобы next_token не считал токен два раза
+ParseResult ReadTerm(Tokenizer* tokenizer){
+    ParseResult num = read_number(tokenizer);
 
+    if (num.is_error()) {
+        return num;
+    }
+
+    double result = num.get_result();
+
+    Token operation_token = tokenizer -> next_token();
+    
+    if (!operation_token.is_oper()) {
+        return ParseResult("Expected opeation");
+    }
+
+    char oper = operation_token.get_oper();
+
+    while (oper == '*' || oper == '/')
+    {
+        num = read_number(tokenizer);
+        
+        if (num.is_error()) {
+            return num;
+        }
+
+        apply_op(oper, result, num.get_result(), &result);
+
+        operation_token = tokenizer -> next_token();
+
+        if (
+            operation_token.is_empty()
+        ) {
+            return ParseResult(result);
+        }        
+
+        if (!operation_token.is_oper()) {
+            return ParseResult("Expected operation");
+        }
+
+        oper = operation_token.get_oper();
+    }
+
+    return ParseResult(result);
+}
+
+ParseResult read_number(Tokenizer* tokenizer) {
+    Token token = tokenizer->next_token();
+    int multiplier = 1;
+
+    if (token.is_oper()) {
+        char oper = token.get_oper();
+
+        if (oper != '+' && oper != '-') {
+            return ParseResult("Expected '+' or '-'");
+        }
+
+        multiplier = oper == '+' ? 1 : -1;
+
+        token = tokenizer -> next_token();
+    }
+
+    if (token.is_number()) {
+        return ParseResult(multiplier * token.get_number());
+    }
+        
 }
 
 ParseResult eval(string expr)
@@ -48,42 +113,34 @@ ParseResult eval(string expr)
     */
 
     // Токенайзер считывает строку "по словам (лексемам)"
-    Tokenizer tok = Tokenizer(expr);
+    Tokenizer tokenizer = Tokenizer(expr);
 
-    /*if(tok.get_operation() == '-'){
-        Token t2 = tok.next_token();
-        if(t2.is_number()){
-            return (t2.get_number() )*(-1);
-        }
-    }*/
-
-    ParseResult t1 = get_number(&tokenizer);
+    ParseResult t1 = read_number(&tokenizer);
     if(t1.is_error())
     {
         return t1;
     }
-
-    /// Написать логику функции ReadTerm(&tokenizer);
-    /// Запомнить позицию предыдущего токена и сделать функцию backup, которая вернет значение предыдущей позиции, чтобы next_token не считал токен два раза
 
     double result = t1.get_result(); 
 
     // В цикле обрабатываем последующие сложения и вычитания
     while(true)
     {
-        Token op_token = tokenizer->next_token();
+        Token op_token = tokenizer.next_token();
         if (op_token.is_empty())
         {
             // Если вместо оператора +,- получаем пустой токен, то это признак
             // конца обрабатываемой строки. Выходим из цикла и формируем результат.
             break;
         }
+
+        // Если не получили оператор - выводим ошибку
         if (!op_token.is_oper())
         {
             return ParseResult("Expected operator but got" + op_token.debug());
         }
 
-        ParseResult term = next_token(tokenizer);
+        ParseResult term = read_number(&tokenizer);
 
         if (term.is_error())
         {
@@ -92,7 +149,7 @@ ParseResult eval(string expr)
 
         // Применяем оператор + или - к разобранным числам.
         char op = op_token.get_oper();
-        if (!apply_op(op, result, num_token.get_result(), &result))
+        if (!apply_op(op, result, term.get_result(), &result))
         {
             return ParseResult(string("Unknown operator ") + op);
         }
@@ -100,3 +157,4 @@ ParseResult eval(string expr)
 
     return ParseResult(result);
 }
+
