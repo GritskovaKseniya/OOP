@@ -30,11 +30,11 @@ Token Tokenizer::next_token(){
         /// Проверяем, является ли наш символ оператором.
         if(
             expr.at(cur) == '*' 
-            | expr.at(cur) == '/' 
-            | expr.at(cur) == '+' 
-            | expr.at(cur) == '-'
-            | expr.at(cur) == '('
-            | expr.at(cur) == ')'
+            || expr.at(cur) == '/' 
+            || expr.at(cur) == '+' 
+            || expr.at(cur) == '-'
+            || expr.at(cur) == '('
+            || expr.at(cur) == ')'
           )
         { 
             /// Создаем результирующий токен и кладем в него значение символа.

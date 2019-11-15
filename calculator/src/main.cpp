@@ -16,10 +16,10 @@ int main()
     string expr;
     getline(cin, expr);
 
-    TestTokenizer(expr);
+    //TestTokenizer(expr);
 
-    return 0;
-    /*ParseResult result = eval(expr);
+    //return 0;
+    ParseResult result = eval(expr);
     
     if (result.is_error())
     {
@@ -30,7 +30,7 @@ int main()
         cout << "Result is " << result.get_result() << endl;
     }
     
-    return 0; */
+    return 0; 
 }
 
 void TestTokenizer(string expr)
