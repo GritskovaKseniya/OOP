@@ -157,4 +157,3 @@ ParseResult eval(string expr)
 
     return ParseResult(result);
 }
-

@@ -16,10 +16,10 @@ int main()
     string expr;
     getline(cin, expr);
 
-    //TestTokenizer(expr);
+    /*TestTokenizer(expr);
 
-    //return 0;
-    ParseResult result = eval(expr);
+    return 0;
+    */ParseResult result = eval(expr);
     
     if (result.is_error())
     {
