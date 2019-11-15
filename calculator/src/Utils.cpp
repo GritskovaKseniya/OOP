@@ -24,11 +24,11 @@ bool apply_op(char op, double num1, double num2, double* result)
     
     return true;
 }
-/*
+
 ParseResult ReadTerm(&tokenizer){
- retutn 0;
+
 }
-*/
+
 ParseResult eval(string expr)
 {
     /*
@@ -50,31 +50,28 @@ ParseResult eval(string expr)
     // Токенайзер считывает строку "по словам (лексемам)"
     Tokenizer tok = Tokenizer(expr);
 
-    // Первый токен должен быть числом
-    Token t1 = tok.next_token();
-    if (!t1.is_number())
-    {
-        return ParseResult("Expected number, but got" + t1.debug());
-    }
-
-    double result = t1.get_number();
-    /*
-    ParseResult number1 = ReadTerm(&tokenizer);
-    if (number1.is_error())
-    {
-        return number1;
+    /*if(tok.get_operation() == '-'){
+        Token t2 = tok.next_token();
+        if(t2.is_number()){
+            return (t2.get_number() )*(-1);
+        }
     }*/
+
+    ParseResult t1 = get_number(&tokenizer);
+    if(t1.is_error())
+    {
+        return t1;
+    }
 
     /// Написать логику функции ReadTerm(&tokenizer);
     /// Запомнить позицию предыдущего токена и сделать функцию backup, которая вернет значение предыдущей позиции, чтобы next_token не считал токен два раза
-    ///
-    /*double result = number1.get_result(); */
 
+    double result = t1.get_result(); 
 
     // В цикле обрабатываем последующие сложения и вычитания
     while(true)
     {
-        Token op_token = tok.next_token();
+        Token op_token = tokenizer->next_token();
         if (op_token.is_empty())
         {
             // Если вместо оператора +,- получаем пустой токен, то это признак
@@ -86,15 +83,16 @@ ParseResult eval(string expr)
             return ParseResult("Expected operator but got" + op_token.debug());
         }
 
-        Token num_token = tok.next_token();
-        if (!num_token.is_number())
+        ParseResult term = next_token(tokenizer);
+
+        if (term.is_error())
         {
-            return ParseResult("Expected number but got" + num_token.debug());
+            return term;
         }
 
         // Применяем оператор + или - к разобранным числам.
         char op = op_token.get_oper();
-        if (!apply_op(op, result, num_token.get_number(), &result))
+        if (!apply_op(op, result, num_token.get_result(), &result))
         {
             return ParseResult(string("Unknown operator ") + op);
         }

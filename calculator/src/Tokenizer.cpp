@@ -27,7 +27,15 @@ Token Tokenizer::next_token(){
     /// Условие: Счётчик не вышел за пределы строки.
     while (cur < expr.length())
     {
-        if(expr.at(cur) == '*' | expr.at(cur) == '/')
+        /// Проверяем, является ли наш символ оператором.
+        if(
+            expr.at(cur) == '*' 
+            | expr.at(cur) == '/' 
+            | expr.at(cur) == '+' 
+            | expr.at(cur) == '-'
+            | expr.at(cur) == '('
+            | expr.at(cur) == ')'
+          )
         { 
             /// Создаем результирующий токен и кладем в него значение символа.
             Token result = Token(expr.at(cur)); 
@@ -35,15 +43,6 @@ Token Tokenizer::next_token(){
             cur++; 
             return result;
         }
-        /// Проверяем значение символа на текущей позиции.
-        if(expr.at(cur) == '+' | expr.at(cur) == '-')
-        { 
-            /// Создаем результирующий токен и кладем в него значение символа.
-            Token result = Token(expr.at(cur)); 
-            /// Увеличиваем счетчик на еденицу.
-            cur++; 
-            return result;
-        }   
         
         /// Проверяем, является ли наш символ числом с помощью функции isdigit (возвращает true, если число)
         if( cur < expr.length() && isdigit(expr.at(cur)) )
@@ -114,16 +113,3 @@ void Tokenizer::SkipSpaces()
         cur++;
     }
 }
-/*
-void Tokenizer::TokenType(char station)
-{
-    if(    station == '+'
-        || station == '-'
-        || station == '*'
-        || station == '/'
-        || station == '('
-        || station == ')'
-        ){
-            Token stat =Token(station);
-        } else if ()
-}*/

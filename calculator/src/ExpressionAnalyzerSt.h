@@ -114,3 +114,5 @@ bool apply_op(char op, double num1, double num2, double* result);
 /// Разбирает арифметическое выражение и считает результат
 ParseResult eval(string expr);
 
+ParseResult read_number();
+
