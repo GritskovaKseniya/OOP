@@ -10,6 +10,7 @@ Tokenizer::Tokenizer(string expr)
 {
     this->expr = expr;
     cur = 0;
+    this->has_push_back = false;
 }
 
 /// Добавить распознавание отрицательных чисел
@@ -41,6 +42,11 @@ Token Tokenizer::next_token(){
             Token result = Token(expr.at(cur)); 
             /// Увеличиваем счетчик на еденицу.
             cur++; 
+            last_token = result;
+            if (this->has_push_back) {
+                this->has_push_back = false;
+                return last_token;
+            }
             return result;
         }
         
@@ -50,7 +56,6 @@ Token Tokenizer::next_token(){
             /// Запоминаем значение указателя и увеличиваем счетчик.
             start = cur;
             cur++;
-
 
             /// Опять проверяем является ли символ числом. 
             while(cur < expr.length() && isdigit(expr.at(cur)) )
@@ -83,7 +88,11 @@ Token Tokenizer::next_token(){
             string number = expr.substr(start, cur - start);
             /// Преобразуем string to double и создаем новый токен с этим содержимым.
             Token result = Token(atof(number.c_str()));
-            //return result1;
+            last_token = result;
+            if (this->has_push_back) {
+                this->has_push_back = false;
+                return last_token;
+            }
             return result;
 
         } else 
@@ -97,6 +106,11 @@ Token Tokenizer::next_token(){
             /// Создаем подстроку, в которую кладем невалидные данные. 
             string unknown = expr.substr(start); //кладем всё, от начала указатела до конца строки
             Token result = Token(unknown);
+            last_token = result;
+            if (this->has_push_back) {
+                this->has_push_back = false;
+                return last_token;
+            }
             return result;
         } 
     }
@@ -112,4 +126,13 @@ void Tokenizer::SkipSpaces()
     while(cur < expr.length() && expr.at(cur) == ' '){
         cur++;
     }
+}
+
+bool Tokenizer::push_back() {
+    if (this->has_push_back) {
+        return false;
+    }
+
+    this->has_push_back = true;
+    return true;
 }

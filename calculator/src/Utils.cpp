@@ -28,47 +28,48 @@ bool apply_op(char op, double num1, double num2, double* result)
     /// Написать логику функции ReadTerm(&tokenizer);
     /// Запомнить позицию предыдущего токена и сделать функцию backup, которая вернет значение предыдущей позиции, чтобы next_token не считал токен два раза
 ParseResult ReadTerm(Tokenizer* tokenizer){
-    ParseResult num = read_number(tokenizer);
+    ParseResult number = read_number(tokenizer);
 
-    if (num.is_error()) {
-        return num;
+    if (number.is_error()) {
+        return number;
     }
 
-    double result = num.get_result();
+    double result = number.get_result();
 
-    Token operation_token = tokenizer -> next_token();
+    Token operation_token = tokenizer->next_token();
     
     if (!operation_token.is_oper()) {
-        return ParseResult("Expected opeation");
+        return ParseResult("Expected opeation ");
     }
 
     char oper = operation_token.get_oper();
 
     while (oper == '*' || oper == '/')
     {
-        num = read_number(tokenizer);
+        number = read_number(tokenizer);
         
-        if (num.is_error()) {
-            return num;
+        if (number.is_error()) {
+            return number;
         }
 
-        apply_op(oper, result, num.get_result(), &result);
+        apply_op(oper, result, number.get_result(), &result);
 
-        operation_token = tokenizer -> next_token();
+        operation_token = tokenizer->next_token();
 
         if (
             operation_token.is_empty()
         ) {
+            tokenizer->push_back();
             return ParseResult(result);
         }        
 
         if (!operation_token.is_oper()) {
-            return ParseResult("Expected operation");
+            return ParseResult("Expected operation ");
         }
 
         oper = operation_token.get_oper();
     }
-
+    tokenizer->push_back();
     return ParseResult(result);
 }
 
@@ -115,7 +116,7 @@ ParseResult eval(string expr)
     // Токенайзер считывает строку "по словам (лексемам)"
     Tokenizer tokenizer = Tokenizer(expr);
 
-    ParseResult t1 = read_number(&tokenizer);
+    ParseResult t1 =  ReadTerm(&tokenizer);
     if(t1.is_error())
     {
         return t1;
@@ -137,10 +138,10 @@ ParseResult eval(string expr)
         // Если не получили оператор - выводим ошибку
         if (!op_token.is_oper())
         {
-            return ParseResult("Expected operator but got" + op_token.debug());
+            return ParseResult("Expected operator but got " + op_token.debug());
         }
 
-        ParseResult term = read_number(&tokenizer);
+        ParseResult term =  ReadTerm(&tokenizer);
 
         if (term.is_error())
         {

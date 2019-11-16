@@ -94,6 +94,7 @@ public:
     /// Если строка кончилась, возвращает пустой токен token.is_empty()=true
     /// Если в строке ерунда - возвращает токен с type=UNKNOWN
     Token next_token();
+    bool push_back();
 
 private:
     /// Поле Expression.
@@ -102,7 +103,9 @@ private:
     int cur;  
     ///Функция, которая пропускает пробелы.
     void SkipSpaces();
+    Token last_token = Token();
 
+    bool has_push_back;
 };
 
 
