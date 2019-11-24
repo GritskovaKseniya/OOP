@@ -73,6 +73,7 @@ ParseResult ReadTerm(Tokenizer* tokenizer){
     return ParseResult(result);
 }
 
+// функция, которая понимает, что такое отрицательное число
 ParseResult read_number(Tokenizer* tokenizer) {
     Token token = tokenizer->next_token();
     int multiplier = 1;
