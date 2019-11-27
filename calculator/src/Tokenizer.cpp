@@ -17,9 +17,15 @@ Tokenizer::Tokenizer(string expr)
 
 /// Добавить операции умножения и деления
 
+/// Возвращает следующий токен из запомненной строки.
+/// Если в строке ерунда - возвращает токен с type=UNKNOWN
 Token Tokenizer::next_token(){
-    /// Возвращает следующий токен из запомненной строки.
-    /// Если в строке ерунда - возвращает токен с type=UNKNOWN
+    
+    if (has_push_back) {
+        has_push_back = false;
+        return last_token;
+    }
+
     SkipSpaces();
 
     int start = cur; /// Заводим счетчик строки.
@@ -38,11 +44,6 @@ Token Tokenizer::next_token(){
             || expr.at(cur) == ')'
           )
         { 
-
-            if (this->has_push_back) {
-                this->has_push_back = false;
-                return last_token;
-            }
             /// Создаем результирующий токен и кладем в него значение символа.
             Token result = Token(expr.at(cur)); 
             /// Увеличиваем счетчик на еденицу.
@@ -90,12 +91,9 @@ Token Tokenizer::next_token(){
             string number = expr.substr(start, cur - start);
             /// Преобразуем string to double и создаем новый токен с этим содержимым.
             Token result = Token(atof(number.c_str()));
+            
             last_token = result;
-            if (this->has_push_back) {
-                this->has_push_back = false;
-                return last_token;
-            }
-            return result;
+            return last_token;
 
         } else 
         {
@@ -108,17 +106,16 @@ Token Tokenizer::next_token(){
             /// Создаем подстроку, в которую кладем невалидные данные. 
             string unknown = expr.substr(start); //кладем всё, от начала указатела до конца строки
             Token result = Token(unknown);
+            
             last_token = result;
-            if (this->has_push_back) {
-                this->has_push_back = false;
-                return last_token;
-            }
-            return result;
+            return last_token;
         } 
     }
     /// Если мы тут, то строка закончилась. Возвращаем пустой токен.
     Token end = Token();
-    return end;
+    last_token = end;
+
+    return last_token;
      
 }
 
