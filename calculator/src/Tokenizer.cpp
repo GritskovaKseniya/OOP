@@ -39,14 +39,15 @@ Token Tokenizer::next_token(){
           )
         { 
 
-            /// Создаем результирующий токен и кладем в него значение символа.
-            Token result = Token(expr.at(cur)); 
-            /// Увеличиваем счетчик на еденицу.
-            cur++; 
             if (this->has_push_back) {
                 this->has_push_back = false;
                 return last_token;
             }
+            /// Создаем результирующий токен и кладем в него значение символа.
+            Token result = Token(expr.at(cur)); 
+            /// Увеличиваем счетчик на еденицу.
+            cur++; 
+            
             last_token = result;
             return last_token;
         }
