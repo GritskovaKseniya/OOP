@@ -37,6 +37,10 @@ ParseResult ReadTerm(Tokenizer* tokenizer){
     double result = number.get_result();
 
     Token operation_token = tokenizer->next_token();
+
+    if (operation_token.is_empty() ) {
+        return ParseResult(result);
+    }
     
     if (!operation_token.is_oper()) {
         return ParseResult("Expected opeation ");
@@ -56,9 +60,7 @@ ParseResult ReadTerm(Tokenizer* tokenizer){
 
         operation_token = tokenizer->next_token();
 
-        if (
-            operation_token.is_empty()
-        ) {
+        if (operation_token.is_empty() ) {
             tokenizer->push_back();
             return ParseResult(result);
         }        
@@ -87,7 +89,7 @@ ParseResult read_number(Tokenizer* tokenizer) {
 
         multiplier = oper == '+' ? 1 : -1;
 
-        token = tokenizer -> next_token();
+        token = tokenizer->next_token();
     }
 
     if (token.is_number()) {

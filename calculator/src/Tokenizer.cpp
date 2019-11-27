@@ -38,16 +38,17 @@ Token Tokenizer::next_token(){
             || expr.at(cur) == ')'
           )
         { 
+
             /// Создаем результирующий токен и кладем в него значение символа.
             Token result = Token(expr.at(cur)); 
             /// Увеличиваем счетчик на еденицу.
             cur++; 
-            last_token = result;
             if (this->has_push_back) {
                 this->has_push_back = false;
                 return last_token;
             }
-            return result;
+            last_token = result;
+            return last_token;
         }
         
         /// Проверяем, является ли наш символ числом с помощью функции isdigit (возвращает true, если число)
