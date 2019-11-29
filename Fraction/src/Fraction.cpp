@@ -1,33 +1,61 @@
 #include "Fraction.h"
 
 Fraction::Fraction(int numerator, int denominator){
-    this->numerator = numerator;
-    this->denominator = denominator;
+    bool valid = check_parameter(denominator);
+    if(valid == true){
+        this->numerator = numerator;
+        this->denominator = denominator;
+    }else if(numerator == 0){
+        this->numerator = 0;
+        this->denominator = 0;
+    }else {
+        this->numerator = 0;
+        this->denominator = 0;
+    }
 }
 
 Fraction::~Fraction(){
 }
 
-void Fraction::operator +(Fraction* other){
-    int other_denominator = other->denominator;
-    int new_denominator = find_common_denominator(other_denominator);
-    Fraction result(1,new_denominator);
+Fraction Fraction::operator+(const Fraction &other){
+    int new_numerator = numerator*other.denominator + other.numerator*denominator;
+    int new_denominator = denominator*other.denominator;
+    Fraction result(new_numerator,new_denominator);
+    return result;
 }
     
-void Fraction::operator -(Fraction* other){
-
+Fraction Fraction::operator -(const Fraction &other){
+    int new_numerator = numerator*other.denominator - other.numerator*denominator;
+    int new_denominator = denominator*other.denominator;
+    Fraction result(new_numerator,new_denominator);
+    return result;
 }
 
-void Fraction::operator =(Fraction* other){
-
+Fraction Fraction::operator *(const Fraction &other){
+    int new_numerator = numerator*other.numerator;
+    int new_denominator = denominator*other.denominator;
+    Fraction result(new_numerator,new_denominator);
+    return result;
 }
 
-void Fraction::operator !=(Fraction* other){
+Fraction Fraction::operator /(const Fraction &other){
+    int new_numerator = numerator*other.denominator;
+    int new_denominator = denominator*other.numerator;
+    Fraction result(new_numerator,new_denominator);
+    return result;
+}
+Fraction Fraction::operator =(const Fraction &other){
+    /*this->numerator = other.numerator;
+    this->denominator = other.denominator;
+    return *this;*/
+}
+
+Fraction Fraction::operator !=(const Fraction &other){
 
 }
 
 void Fraction::print(){
-    bool check = check_parameter(numerator,denominator);
+    bool check = check_parameter(denominator);
     if(check == true){
         cout << numerator << "/" << denominator << endl;
     }else
@@ -36,7 +64,7 @@ void Fraction::print(){
     }
 }
 
-bool Fraction::check_parameter(int numerator, int denominator){
+bool Fraction::check_parameter(int denominator){
     if(denominator > 0){
         return true;
     }
@@ -46,19 +74,19 @@ bool Fraction::check_parameter(int numerator, int denominator){
 int abs (int value) {
 	return (value < 0) ? -value : value;
 }
-// Euclid's algorithm 
+// Euclid's algorithm НОД
 int gcd (int a, int b) {
 	while (b)
 		b ^= a ^= b ^= a %= b;
 	return abs(a);
 }
-// smallest common multiple
+// smallest common multiple НОК
 int scm(int a, int b) 
 { 
   return a*b / gcd(a, b); 
 }
 
-int Fraction::simplification(){
+void Fraction::Cancellation(){
 
 }
 
