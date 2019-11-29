@@ -18,16 +18,30 @@ Fraction::~Fraction(){
 }
 
 Fraction Fraction::operator+(const Fraction &other){
-    int new_numerator = numerator*other.denominator + other.numerator*denominator;
-    int new_denominator = denominator*other.denominator;
+    int new_numerator; 
+    int new_denominator;
+    if(denominator == other.denominator){
+        new_denominator = denominator;
+        new_numerator = numerator+ other.numerator;
+    }else {
+        new_denominator = denominator*other.denominator;
+        new_numerator = numerator*other.denominator + other.numerator*denominator;
+    }
     Fraction result(new_numerator,new_denominator);
     result.Cancellation();
     return result;
 }
     
 Fraction Fraction::operator -(const Fraction &other){
-    int new_numerator = numerator*other.denominator - other.numerator*denominator;
-    int new_denominator = denominator*other.denominator;
+    int new_numerator;
+    int new_denominator; 
+    if(denominator == other.denominator){
+        new_numerator = numerator - other.numerator;
+        new_denominator = denominator;
+    }else{
+        new_numerator = numerator*other.denominator - other.numerator*denominator;
+        new_denominator = denominator*other.denominator;
+    }
     Fraction result(new_numerator,new_denominator);
     result.Cancellation();
     return result;  
@@ -68,8 +82,7 @@ void Fraction::print(){
     if(check == true){
         if(numerator == denominator){
             cout << 1 << endl;
-        }
-        cout << numerator << "/" << denominator << endl;
+        } else cout << numerator << "/" << denominator << endl;
     }else if(numerator == 0){
         cout << 0 << endl;
     }else if(denominator == 0){
