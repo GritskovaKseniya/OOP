@@ -13,9 +13,9 @@ public:
     Fraction(int number):Fraction(number, 1){};
 
     Fraction(double number){
-        /*numerator
-        this->numerator = 
-        this->denominator = */
+        Fraction f = doubleToFraction(number);
+        numerator = f.numerator;
+        denominator = f.denominator;
     };
 
     Fraction(const Fraction &other); // конструктор копирования
@@ -41,6 +41,7 @@ public:
     void print(); 
     /// simplification fraction сокращение дроби
     Fraction Cancellation();
+
 private:
     /// fraction numerator
     int numerator;
@@ -48,4 +49,6 @@ private:
     int denominator;
     /// check correct parametr
     bool check_parameter(int denominator);
+    Fraction doubleToFraction(double number);
+    
 };

@@ -1,9 +1,18 @@
 #include "Fraction.h"
+#include <string>
+#include <sstream>
+#include <iostream>
 
 Fraction::Fraction(int numerator, int denominator){
         this->numerator = numerator;
         this->denominator = denominator;
 }
+
+Fraction::Fraction(const Fraction &other){
+    this->numerator = other.numerator;
+    this->denominator = other.denominator;
+}
+
 
 Fraction::~Fraction(){
 }
@@ -89,4 +98,19 @@ Fraction Fraction::Cancellation(){
     Fraction reduced_fraction(new_numerator,new_denominator);
     reduced_fraction.print();
     return reduced_fraction;
+}
+
+Fraction Fraction::doubleToFraction(double number){
+    double fraction_part = number - ((long)number);
+    std::stringstream ss;
+    ss << fraction_part;
+    string s = ss.str();
+    int degree = s.length() - 2;
+    int den = 1;
+    for(int i = 0; i < degree;i++){
+        den = den*10;
+    }
+    int num = number*den;
+    Fraction fraction(num, den);
+    return fraction;
 }

@@ -13,12 +13,14 @@ int main() {
     cout << "first: ";  first.print(); cout << " " << endl;
     Fraction second = Fraction(a,b);
     cout << "second: "; second.print(); cout << " " << endl;
-
-    first = second;
-    first.print();
-    //cout << "Cancellation: "; first.Cancellation(); cout << " " << endl;
-
+    Fraction se = Fraction(3.15);
+    se.print();
 /*
+    first = second;
+    cout << "first: ";  first.print(); cout << " " << endl;
+    cout << "second: "; second.print(); cout << " " << endl;
+    cout << "Cancellation: "; first.Cancellation(); cout << " " << endl;
+
     Fraction sum = first + second;
     cout << "sum: "; sum.print(); cout << " " << endl;
 
