@@ -28,7 +28,9 @@ public:
     ///
     Fraction operator =(const Fraction &other);
     ///
-    Fraction operator !=(const Fraction &other);
+    bool operator !=(const Fraction &other);
+    ///
+    bool operator ==(const Fraction &other);
     /// ptint fraction
     void print(); 
 private:
@@ -38,26 +40,8 @@ private:
     int denominator;
     /// Integer number
     int number;
-    /// fraction integer part
-    int intPart;
- 
     /// check correct parametr
     bool check_parameter(int denominator);
-   
-   
     /// simplification fraction сокращение дроби
     void Cancellation();
-    /// преобразование в смешанный вид
-    void GetMixedView();
-    /// выделение целой части
-    void GetIntPart(); 
-    /// find commo denominator in two fraction
-    int find_common_denominator(int other_denominatorher);
-
-    int find_new_numerator(int other_numerator);
-
-    int getNumerator() const;
-    int getDenominator() const;
-
-
 };

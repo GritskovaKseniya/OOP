@@ -1,17 +1,8 @@
 #include "Fraction.h"
 
 Fraction::Fraction(int numerator, int denominator){
-    bool valid = check_parameter(denominator);
-    if(valid == true){
         this->numerator = numerator;
         this->denominator = denominator;
-    }else if(numerator == 0){
-        this->numerator = 0;
-        this->denominator = 0;
-    }else {
-        this->numerator = 0;
-        this->denominator = 0;
-    }
 }
 
 Fraction::~Fraction(){
@@ -28,21 +19,21 @@ Fraction Fraction::operator -(const Fraction &other){
     int new_numerator = numerator*other.denominator - other.numerator*denominator;
     int new_denominator = denominator*other.denominator;
     Fraction result(new_numerator,new_denominator);
-    return result;
+    return result;  
 }
 
 Fraction Fraction::operator *(const Fraction &other){
     int new_numerator = numerator*other.numerator;
     int new_denominator = denominator*other.denominator;
     Fraction result(new_numerator,new_denominator);
-    return result;
+    return result;  
 }
 
 Fraction Fraction::operator /(const Fraction &other){
     int new_numerator = numerator*other.denominator;
     int new_denominator = denominator*other.numerator;
     Fraction result(new_numerator,new_denominator);
-    return result;
+    return result;  
 }
 Fraction Fraction::operator =(const Fraction &other){
     /*this->numerator = other.numerator;
@@ -50,8 +41,13 @@ Fraction Fraction::operator =(const Fraction &other){
     return *this;*/
 }
 
-Fraction Fraction::operator !=(const Fraction &other){
+bool Fraction::operator !=(const Fraction &other){
+    return !(*this == other);
+}
 
+bool Fraction::operator ==(const Fraction &other){
+    return this->numerator == other.numerator
+        && this->denominator == other.denominator;
 }
 
 void Fraction::print(){
@@ -88,13 +84,4 @@ int scm(int a, int b)
 
 void Fraction::Cancellation(){
 
-}
-
-int Fraction::find_common_denominator(int other_denominator){
-    int this_denominator = this->denominator; // узнаем делитель первого числа
-    return scm(this_denominator, other_denominator); // находим нод
-}
-
-int Fraction::find_new_numerator(int other_numerator){
-    
 }

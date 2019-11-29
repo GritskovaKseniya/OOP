@@ -11,22 +11,26 @@ int main() {
     int a = 5, b = 8, c = 3, d = 4;
     Fraction first = Fraction(a,b);
     cout << "first: ";  first.print(); cout << " " << endl;
-    Fraction second = Fraction(c,d);
+    Fraction second = Fraction(a,b);
     cout << "second: "; second.print(); cout << " " << endl;
 
     Fraction sum = first + second;
-    sum.print();
+    cout << "sum: "; sum.print(); cout << " " << endl;
 
     Fraction dif = first - second;
-    dif.print();
+    cout << "dif: "; dif.print(); cout << " " << endl;
 
     Fraction mult = first * second;
-    mult.print();
+    cout << "mult: "; mult.print(); cout << " " << endl;
 
     Fraction div = first / second;
-    div.print();
+    cout << "div: "; div.print(); cout << " " << endl;
 
-    /*first.operator=(second);
-    cout << "first: ";  first.print(); cout << " " << endl;
-    cout << "second: "; second.print(); cout << " " << endl;*/
+    if(first == second){
+        cout << "Fraction equal: ";  first.print(); cout << " " << endl;
+    } else cout << "no equal " << endl;
+
+    if(first != second){
+        cout << "Fraction no equal: ";  first.print(); cout << " "; second.print(); cout << " " << endl;
+    } else cout << " equal " << endl;
 }
