@@ -13,16 +13,18 @@ int main() {
     cout << "first: ";  first.print(); cout << " " << endl;
     Fraction second = Fraction(a,b);
     cout << "second: "; second.print(); cout << " " << endl;
-    Fraction se = Fraction(3.15);
-    se.print();
-/*
+    Fraction third = Fraction(3.15);
+    cout << "third: "; third.print(); cout << " " << endl;
+
     first = second;
     cout << "first: ";  first.print(); cout << " " << endl;
     cout << "second: "; second.print(); cout << " " << endl;
-    cout << "Cancellation: "; first.Cancellation(); cout << " " << endl;
 
     Fraction sum = first + second;
-    cout << "sum: "; sum.print(); cout << " " << endl;
+    cout << "sum1: "; sum.print(); cout << " " << endl;
+
+    Fraction sum2 = third + second;
+    cout << "sum2: "; sum2.print(); cout << " " << endl;
 
     Fraction dif = first - second;
     cout << "dif: "; dif.print(); cout << " " << endl;
@@ -33,6 +35,7 @@ int main() {
     Fraction div = first / second;
     cout << "div: "; div.print(); cout << " " << endl;
 
+
     if(first == second){
         cout << "Fraction equal: ";  first.print(); cout << " " << endl;
     } else cout << "no equal " << endl;
@@ -41,6 +44,5 @@ int main() {
         cout << "Fraction no equal: ";  first.print(); cout << " "; second.print(); cout << " " << endl;
     } else cout << " equal " << endl;
 
-    */
     
 }

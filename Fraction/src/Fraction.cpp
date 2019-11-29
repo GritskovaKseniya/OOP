@@ -4,8 +4,8 @@
 #include <iostream>
 
 Fraction::Fraction(int numerator, int denominator){
-        this->numerator = numerator;
-        this->denominator = denominator;
+    this->numerator = numerator;
+    this->denominator = denominator;
 }
 
 Fraction::Fraction(const Fraction &other){
@@ -21,6 +21,7 @@ Fraction Fraction::operator+(const Fraction &other){
     int new_numerator = numerator*other.denominator + other.numerator*denominator;
     int new_denominator = denominator*other.denominator;
     Fraction result(new_numerator,new_denominator);
+    result.Cancellation();
     return result;
 }
     
@@ -28,6 +29,7 @@ Fraction Fraction::operator -(const Fraction &other){
     int new_numerator = numerator*other.denominator - other.numerator*denominator;
     int new_denominator = denominator*other.denominator;
     Fraction result(new_numerator,new_denominator);
+    result.Cancellation();
     return result;  
 }
 
@@ -35,6 +37,7 @@ Fraction Fraction::operator *(const Fraction &other){
     int new_numerator = numerator*other.numerator;
     int new_denominator = denominator*other.denominator;
     Fraction result(new_numerator,new_denominator);
+    result.Cancellation();
     return result;  
 }
 
@@ -42,6 +45,7 @@ Fraction Fraction::operator /(const Fraction &other){
     int new_numerator = numerator*other.denominator;
     int new_denominator = denominator*other.numerator;
     Fraction result(new_numerator,new_denominator);
+    result.Cancellation();
     return result;  
 }
 Fraction Fraction::operator =(const Fraction &other){
@@ -62,15 +66,19 @@ bool Fraction::operator ==(const Fraction &other){
 void Fraction::print(){
     bool check = check_parameter(denominator);
     if(check == true){
+        if(numerator == denominator){
+            cout << 1 << endl;
+        }
         cout << numerator << "/" << denominator << endl;
-    }else
-    {
-        cout << " Denominator is not correct" << endl;
+    }else if(numerator == 0){
+        cout << 0 << endl;
+    }else if(denominator == 0){
+        cout << 0 << endl;
     }
 }
 
 bool Fraction::check_parameter(int denominator){
-    if(denominator > 0){
+    if(denominator > 0 && numerator > 0){
         return true;
     }
 }
@@ -96,7 +104,6 @@ Fraction Fraction::Cancellation(){
     int new_numerator = numerator/GCD;
     int new_denominator = denominator/GCD;
     Fraction reduced_fraction(new_numerator,new_denominator);
-    reduced_fraction.print();
     return reduced_fraction;
 }
 
