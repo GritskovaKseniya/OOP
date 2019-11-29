@@ -26,7 +26,6 @@ int main() {
     Fraction div = first / second;
     div.print();
 
-    /*first.operator=(second);
-    cout << "first: ";  first.print(); cout << " " << endl;
-    cout << "second: "; second.print(); cout << " " << endl;*/
+    first = second;
+    first.print();
 }
