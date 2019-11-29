@@ -14,7 +14,9 @@ int main() {
     Fraction second = Fraction(a,b);
     cout << "second: "; second.print(); cout << " " << endl;
 
-    cout << "Cancellation: "; first.Cancellation(); cout << " " << endl;
+    first = second;
+    first.print();
+    //cout << "Cancellation: "; first.Cancellation(); cout << " " << endl;
 
 /*
     Fraction sum = first + second;
