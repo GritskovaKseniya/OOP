@@ -12,6 +12,12 @@ public:
     /// Integer number
     Fraction(int number):Fraction(number, 1){};
 
+    Fraction(double number){
+        /*numerator
+        this->numerator = 
+        this->denominator = */
+    };
+
     Fraction(const Fraction &other); // конструктор копирования
     
     ~Fraction();
@@ -33,15 +39,13 @@ public:
     bool operator ==(const Fraction &other);
     /// ptint fraction
     void print(); 
+    /// simplification fraction сокращение дроби
+    Fraction Cancellation();
 private:
     /// fraction numerator
     int numerator;
     /// fraction denominator
     int denominator;
-    /// Integer number
-    int number;
     /// check correct parametr
     bool check_parameter(int denominator);
-    /// simplification fraction сокращение дроби
-    void Cancellation();
 };

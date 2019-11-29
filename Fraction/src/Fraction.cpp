@@ -36,9 +36,9 @@ Fraction Fraction::operator /(const Fraction &other){
     return result;  
 }
 Fraction Fraction::operator =(const Fraction &other){
-    /*this->numerator = other.numerator;
+    this->numerator = other.numerator;
     this->denominator = other.denominator;
-    return *this;*/
+    return *this;
 }
 
 bool Fraction::operator !=(const Fraction &other){
@@ -82,6 +82,11 @@ int scm(int a, int b)
   return a*b / gcd(a, b); 
 }
 
-void Fraction::Cancellation(){
-
+Fraction Fraction::Cancellation(){
+    int GCD = gcd(numerator, denominator);
+    int new_numerator = numerator/GCD;
+    int new_denominator = denominator/GCD;
+    Fraction reduced_fraction(new_numerator,new_denominator);
+    reduced_fraction.print();
+    return reduced_fraction;
 }
