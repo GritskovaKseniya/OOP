@@ -4,8 +4,19 @@
 #include <iostream>
 
 Fraction::Fraction(int numerator, int denominator){
-    this->numerator = numerator;
-    this->denominator = denominator;
+    if(
+        ((numerator == 0) && (denominator == 0)) ||
+        ( (numerator == 0) || (denominator == 0) )
+    ){
+        this->numerator = 0;
+        this->denominator = 0;
+    }else if(denominator < 0){
+        this->numerator = numerator*(-1);
+        this->denominator = denominator*(-1);
+    }else {
+        this->numerator = numerator;
+        this->denominator = denominator;
+    }
 }
 
 Fraction::Fraction(const Fraction &other){
@@ -28,7 +39,6 @@ Fraction Fraction::operator+(const Fraction &other){
         new_numerator = numerator*other.denominator + other.numerator*denominator;
     }
     Fraction result(new_numerator,new_denominator);
-    result.Cancellation();
     return result;
 }
     
@@ -43,7 +53,6 @@ Fraction Fraction::operator -(const Fraction &other){
         new_denominator = denominator*other.denominator;
     }
     Fraction result(new_numerator,new_denominator);
-    result.Cancellation();
     return result;  
 }
 
@@ -51,7 +60,6 @@ Fraction Fraction::operator *(const Fraction &other){
     int new_numerator = numerator*other.numerator;
     int new_denominator = denominator*other.denominator;
     Fraction result(new_numerator,new_denominator);
-    result.Cancellation();
     return result;  
 }
 
@@ -59,7 +67,6 @@ Fraction Fraction::operator /(const Fraction &other){
     int new_numerator = numerator*other.denominator;
     int new_denominator = denominator*other.numerator;
     Fraction result(new_numerator,new_denominator);
-    result.Cancellation();
     return result;  
 }
 Fraction Fraction::operator =(const Fraction &other){
@@ -81,12 +88,15 @@ void Fraction::print(){
     bool check = check_parameter(denominator);
     if(check == true){
         if(numerator == denominator){
-            cout << 1 << endl;
-        } else cout << numerator << "/" << denominator << endl;
+            cout << 1;
+        } else {
+            Cancellation();
+            cout << numerator << "/" << denominator;
+        }
     }else if(numerator == 0){
-        cout << 0 << endl;
+        cout << 0;
     }else if(denominator == 0){
-        cout << 0 << endl;
+        cout << 0;
     }
 }
 
@@ -104,6 +114,7 @@ int abs (int value) {
 int gcd (int a, int b) {
 	while (b)
 		b ^= a ^= b ^= a %= b;
+        /// 
 	return abs(a);
 }
 // smallest common multiple НОК
@@ -120,7 +131,7 @@ Fraction Fraction::Cancellation(){
     return reduced_fraction;
 }
 
-Fraction Fraction::doubleToFraction(double number){
+Fraction::Fraction(double number){
     double fraction_part = number - ((long)number);
     std::stringstream ss;
     ss << fraction_part;
@@ -131,6 +142,12 @@ Fraction Fraction::doubleToFraction(double number){
         den = den*10;
     }
     int num = number*den;
-    Fraction fraction(num, den);
-    return fraction;
+    Fraction f(num, den);
+    numerator = f.numerator;
+    denominator = f.denominator;
+}
+
+ostream& operator<<(ostream& out, const Fraction& f)
+{
+    out << f.numerator << "/" << f.denominator;
 }

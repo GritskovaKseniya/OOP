@@ -8,15 +8,11 @@ class Fraction {
 public:
     Fraction(int numerator, int denominator);
     ///default constructor
-    Fraction():Fraction(1, 1){};
+    ///Fraction():Fraction(1, 1){};
     /// Integer number
-    Fraction(int number):Fraction(number, 1){};
+    Fraction(int num):Fraction(num, 1){};
 
-    Fraction(double number){
-        Fraction f = doubleToFraction(number);
-        numerator = f.numerator;
-        denominator = f.denominator;
-    };
+    Fraction(double number);
 
     Fraction(const Fraction &other); // конструктор копирования
     
@@ -42,6 +38,10 @@ public:
     /// simplification fraction сокращение дроби
     Fraction Cancellation();
 
+    Fraction Cancellation(const Fraction &other);
+
+     friend ostream& operator<<(ostream& out, const Fraction& f);
+
 private:
     /// fraction numerator
     int numerator;
@@ -49,6 +49,5 @@ private:
     int denominator;
     /// check correct parametr
     bool check_parameter(int denominator);
-    Fraction doubleToFraction(double number);
-    
+   
 };
