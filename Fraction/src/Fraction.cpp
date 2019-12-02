@@ -41,7 +41,7 @@ Fraction Fraction::operator+(const Fraction &other){
         new_numerator = numerator*other.denominator + other.numerator*denominator;
     }
     Fraction result(new_numerator,new_denominator);
-    Cancellation();
+    result = result.Cancellation();
     return result;
 }
     
@@ -55,8 +55,8 @@ Fraction Fraction::operator -(const Fraction &other){
         new_numerator = numerator*other.denominator - other.numerator*denominator;
         new_denominator = denominator*other.denominator;
     }
-    Fraction result(new_numerator,new_denominator);
-    Cancellation();
+    Fraction result(new_numerator,new_denominator);        
+    result = result.Cancellation();
     return result;  
 }
 
@@ -64,7 +64,7 @@ Fraction Fraction::operator *(const Fraction &other){
     int new_numerator = numerator*other.numerator;
     int new_denominator = denominator*other.denominator;
     Fraction result(new_numerator,new_denominator);
-    Cancellation();
+    result = result.Cancellation();
     return result;  
 }
 
@@ -72,7 +72,7 @@ Fraction Fraction::operator /(const Fraction &other){
     int new_numerator = numerator*other.denominator;
     int new_denominator = denominator*other.numerator;
     Fraction result(new_numerator,new_denominator);
-    Cancellation();
+    result = result.Cancellation();
     return result;  
 }
 Fraction Fraction::operator =(const Fraction &other){
@@ -81,15 +81,16 @@ Fraction Fraction::operator =(const Fraction &other){
     return *this;
 }
 
-bool Fraction::operator !=(const Fraction &other){
+bool Fraction::operator !=(Fraction &other){
     return !(*this == other);
 }
 
-bool Fraction::operator ==(const Fraction &other){
-  /*  Fraction b = other.Cancellation();
-    Fraction a = this->Cancellation();*/
-    return this->numerator == other.numerator
-        && this->denominator == other.denominator;
+bool Fraction::operator ==(Fraction &other){
+    Fraction b = other.Cancellation();
+    Fraction a = this->Cancellation();
+
+    return a.numerator == b.numerator
+        && a.denominator == b.denominator;
 }
 
 void Fraction::print(){
@@ -109,7 +110,7 @@ void Fraction::print(){
 }
 
 bool Fraction::check_parameter(int denominator){
-    if(denominator > 0 && numerator > 0){
+    if(denominator > 0){
         return true;
     }
 }
@@ -131,12 +132,16 @@ int scm(int a, int b)
   return a*b / gcd(a, b); 
 }
 
-Fraction Fraction::Cancellation() const{
+Fraction Fraction::Cancellation(){
     int GCD = gcd(numerator, denominator);
-    int new_numerator = numerator/GCD;
-    int new_denominator = denominator/GCD;
-    Fraction reduced_fraction(new_numerator,new_denominator);
-    return reduced_fraction;
+    if(GCD != 0){
+        int new_numerator = numerator/GCD;
+        int new_denominator = denominator/GCD;
+        Fraction reduced_fraction(new_numerator,new_denominator);
+        return reduced_fraction;
+    }
+    
+    return Fraction(0,1);
 }
 
 Fraction::Fraction(double number){

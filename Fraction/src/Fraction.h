@@ -30,13 +30,13 @@ public:
     ///
     Fraction operator =(const Fraction &other);
     ///
-    bool operator !=(const Fraction &other);
+    bool operator !=(Fraction &other);
     ///
-    bool operator ==(const Fraction &other);
+    bool operator ==(Fraction &other);
     /// ptint fraction
     void print(); 
     /// simplification fraction сокращение дроби
-    Fraction Cancellation() const;
+    Fraction Cancellation();
 
      friend ostream& operator<<(ostream& out, const Fraction& f);
 
