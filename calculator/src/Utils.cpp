@@ -131,7 +131,7 @@ ParseResult eval(string expr)
     while(true)
     {
         Token op_token = tokenizer.next_token();
-        if (op_token.is_empty()|| (op_token.is_bracket() && op_token.get_bracket() == ')')
+        if (op_token.is_empty())
         {
             // Если вместо оператора +,- получаем пустой токен, то это признак
             // конца обрабатываемой строки. Выходим из цикла и формируем результат.
