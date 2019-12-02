@@ -13,7 +13,7 @@ int main() {
     cout << "First fraction: "<< first << " " << endl;
     Fraction second = Fraction(2.04);
     cout << "Second fraction: " << second << " " << endl;
-    Fraction third = Fraction(2,4);
+    Fraction third = Fraction(2, 4);
     cout << "Third fraction: " << third << " " << endl;
     Fraction fourth = Fraction(1,2);
     cout << "Fourth fraction: " << fourth << " " << endl;
@@ -33,9 +33,9 @@ int main() {
 
     Fraction sum2 = first + second;
     cout << "First fraction + Second fraction: "; first.print(); cout << " + "; second.print(); cout << " = "; sum2.print(); cout << " " << endl;
-
     Fraction dif = third - fourth;
-    third.print(); cout << " - "; fourth.print(); cout << " = "; dif.print(); cout << " " << endl;
+
+    third.print(); cout << " - "; fourth.print(); cout << " = " << dif << " " << endl;
 
     Fraction mult = fourth * third;
     third.print(); cout << " * "; fourth.print(); cout << " = "; mult.print(); cout << " " << endl;
@@ -44,9 +44,9 @@ int main() {
     first.print(); cout << " / "; second.print(); cout << " = "; div.print(); cout << " " << endl;
 
 
-    if(first == second){
+    /*if(first == second){
         cout << "First fraction equal second fraction = ";  first.print(); cout << " " << endl;
     } else if(first != second){
         cout << "First fraction no equal second fraction ";  first.print(); cout << " "; second.print(); cout << " " << endl;
-    }
+    }*/
 }
