@@ -13,9 +13,11 @@ Fraction::Fraction(int numerator, int denominator){
     }else if(denominator < 0){
         this->numerator = numerator*(-1);
         this->denominator = denominator*(-1);
+        //Cancellation();
     }else {
         this->numerator = numerator;
         this->denominator = denominator;
+        //Cancellation();
     }
 }
 
@@ -39,6 +41,7 @@ Fraction Fraction::operator+(const Fraction &other){
         new_numerator = numerator*other.denominator + other.numerator*denominator;
     }
     Fraction result(new_numerator,new_denominator);
+    Cancellation();
     return result;
 }
     
@@ -53,6 +56,7 @@ Fraction Fraction::operator -(const Fraction &other){
         new_denominator = denominator*other.denominator;
     }
     Fraction result(new_numerator,new_denominator);
+    Cancellation();
     return result;  
 }
 
@@ -60,6 +64,7 @@ Fraction Fraction::operator *(const Fraction &other){
     int new_numerator = numerator*other.numerator;
     int new_denominator = denominator*other.denominator;
     Fraction result(new_numerator,new_denominator);
+    Cancellation();
     return result;  
 }
 
@@ -67,6 +72,7 @@ Fraction Fraction::operator /(const Fraction &other){
     int new_numerator = numerator*other.denominator;
     int new_denominator = denominator*other.numerator;
     Fraction result(new_numerator,new_denominator);
+    Cancellation();
     return result;  
 }
 Fraction Fraction::operator =(const Fraction &other){
@@ -80,6 +86,8 @@ bool Fraction::operator !=(const Fraction &other){
 }
 
 bool Fraction::operator ==(const Fraction &other){
+  /*  Fraction b = other.Cancellation();
+    Fraction a = this->Cancellation();*/
     return this->numerator == other.numerator
         && this->denominator == other.denominator;
 }
@@ -123,7 +131,7 @@ int scm(int a, int b)
   return a*b / gcd(a, b); 
 }
 
-Fraction Fraction::Cancellation(){
+Fraction Fraction::Cancellation() const{
     int GCD = gcd(numerator, denominator);
     int new_numerator = numerator/GCD;
     int new_denominator = denominator/GCD;

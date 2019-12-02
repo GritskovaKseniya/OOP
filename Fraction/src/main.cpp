@@ -18,11 +18,11 @@ int main() {
     Fraction fourth = Fraction(1,2);
     cout << "Fourth fraction: " << fourth << " " << endl;
 
-    if(third == fourth){
+    /*if(third == fourth){
         cout << "Third fraction equal fourth fraction = "<< third << " " << endl;
     } else if(third != fourth){
         cout << "Third fraction no equal fourth fraction "<< third << " " << fourth << " " << endl;
-    }
+    }*/
 
     Fraction sum = first + second;
     cout << "First fraction + Second fraction: "; first.print(); cout << " + "; second.print(); cout << " = "; sum.print(); cout << " " << endl;
@@ -44,9 +44,9 @@ int main() {
     first.print(); cout << " / "; second.print(); cout << " = "; div.print(); cout << " " << endl;
 
 
-    if(first == second){
+    /*if(first == second){
         cout << "First fraction equal second fraction = ";  first.print(); cout << " " << endl;
     } else if(first != second){
         cout << "First fraction no equal second fraction ";  first.print(); cout << " "; second.print(); cout << " " << endl;
-    }
+    }*/
 }

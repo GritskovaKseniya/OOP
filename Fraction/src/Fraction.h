@@ -36,9 +36,7 @@ public:
     /// ptint fraction
     void print(); 
     /// simplification fraction сокращение дроби
-    Fraction Cancellation();
-
-    Fraction Cancellation(const Fraction &other);
+    Fraction Cancellation() const;
 
      friend ostream& operator<<(ostream& out, const Fraction& f);
 
